@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-09-21T21:23:43.387073+00:00",
+  "same_original_rows_and_values": true,
+  "all_ten_prediction_metrics_recomputed": true,
+  "all_ten_portfolios_reconciled_to_trade_pnl": true,
+  "no_issuer_position_overlap": true,
+  "no_outcomes_in_feature_columns": true,
+  "frozen_hashes_match": true,
+  "tests_passed": 29
+}

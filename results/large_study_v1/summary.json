@@ -1,0 +1,604 @@
+{
+  "created_at": "2026-09-21T20:44:40.875233+00:00",
+  "collection": {
+    "created_at": "2026-09-21T20:42:32.962751+00:00",
+    "candidate_filings": 1619,
+    "selected_filings": 1619,
+    "eligible_filings": 1560,
+    "symbols_with_filings": 129,
+    "bars": 273210,
+    "oversized": 51,
+    "download_failures": 8,
+    "discovery_failures": 1,
+    "price_failures": 0
+  },
+  "inference": {
+    "created_at": "2026-09-21T20:44:09.291755+00:00",
+    "completed": 1560,
+    "requested": 1560,
+    "estimated_total_usd": 0.23921515799999996,
+    "elapsed_seconds_this_run": 108.12997049978003,
+    "total_input_tokens": 5695599,
+    "workers": 4,
+    "new_requests_this_run": 716,
+    "failures": [],
+    "complete": true
+  },
+  "split_counts": {
+    "test": 321,
+    "train": 1088,
+    "validation": 138
+  },
+  "unique_symbols": 129,
+  "test_symbols": 97,
+  "excluded_counts": {
+    "missing lookback or holding-period bars": 2,
+    "nonfinite market features": 1,
+    "label crosses split boundary or entry outside study": 8,
+    "same issuer/entry date; kept latest available filing": 2
+  },
+  "metrics": {
+    "boosting__market_and_metadata": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7053176677240417,
+        "brier": 0.2558190925613568,
+        "accuracy": 0.47101449275362317,
+        "auc": 0.49558080808080807
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7214130756053607,
+        "brier": 0.2637369533788246,
+        "accuracy": 0.470404984423676,
+        "auc": 0.42821316614420063
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7426000072898647,
+          "brier": 0.27389304775008644,
+          "accuracy": 0.4420289855072464,
+          "auc": 0.36324786324786323
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7054360451547513,
+          "brier": 0.25607825926279104,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4827130852340936
+        }
+      }
+    },
+    "boosting__market_metadata_rules": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7056337450338547,
+        "brier": 0.2561319857900301,
+        "accuracy": 0.47101449275362317,
+        "auc": 0.4863215488215488
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7178769025736889,
+        "brier": 0.2619267783400899,
+        "accuracy": 0.48909657320872274,
+        "auc": 0.440987460815047
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7389546427277786,
+          "brier": 0.2720489854331063,
+          "accuracy": 0.45652173913043476,
+          "auc": 0.37094017094017095
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7019822132771621,
+          "brier": 0.2542936385650284,
+          "accuracy": 0.5136612021857924,
+          "auc": 0.4980792316926771
+        }
+      }
+    },
+    "boosting__market_metadata_jev": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7086985390925103,
+        "brier": 0.25716925646114364,
+        "accuracy": 0.4855072463768116,
+        "auc": 0.49537037037037035
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7187499689625868,
+        "brier": 0.2623078707905963,
+        "accuracy": 0.48286604361370716,
+        "auc": 0.4402037617554859
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7300970308806931,
+          "brier": 0.2679193977814997,
+          "accuracy": 0.47101449275362317,
+          "auc": 0.37905982905982905
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7101931681718837,
+          "brier": 0.25807622748598064,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4800720288115246
+        }
+      }
+    },
+    "logistic__market_and_metadata": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.8072507115781572,
+        "brier": 0.286535645931488,
+        "accuracy": 0.5289855072463768,
+        "auc": 0.5054713804713804
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.926748951721046,
+        "brier": 0.30189671100549714,
+        "accuracy": 0.4953271028037383,
+        "auc": 0.4827194357366772
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9314994138566044,
+          "brier": 0.305865894579275,
+          "accuracy": 0.5,
+          "auc": 0.4634615384615385
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9231666360122641,
+          "brier": 0.29890355617936964,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4949579831932773
+        }
+      }
+    },
+    "logistic__market_metadata_rules": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.8141958690256581,
+        "brier": 0.28933977302993863,
+        "accuracy": 0.5144927536231884,
+        "auc": 0.49642255892255893
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.9267022661226972,
+        "brier": 0.30041466143248263,
+        "accuracy": 0.5109034267912772,
+        "auc": 0.48898902821316614
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9303960568738463,
+          "brier": 0.3025303685440591,
+          "accuracy": 0.5,
+          "auc": 0.4773504273504273
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9239167845726505,
+          "brier": 0.29881921016801516,
+          "accuracy": 0.5191256830601093,
+          "auc": 0.49555822328931576
+        }
+      }
+    },
+    "logistic__market_metadata_jev": {
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.8497596923284736,
+        "brier": 0.2934028959683539,
+        "accuracy": 0.5072463768115942,
+        "auc": 0.4962121212121212
+      },
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.9335543260596283,
+        "brier": 0.3065088748788503,
+        "accuracy": 0.48286604361370716,
+        "auc": 0.47245297805642633
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9507843590075062,
+          "brier": 0.3104507902013648,
+          "accuracy": 0.463768115942029,
+          "auc": 0.45235042735042735
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9205611864595892,
+          "brier": 0.3035362829962985,
+          "accuracy": 0.4972677595628415,
+          "auc": 0.4839135654261705
+        }
+      }
+    },
+    "train_class_prior": {
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.6897630334430278,
+        "brier": 0.24830893227145526,
+        "accuracy": 0.5482866043613707,
+        "auc": 0.5
+      }
+    },
+    "uniform": {
+      "test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.6931471805599453,
+        "brier": 0.25,
+        "accuracy": 0.4517133956386293,
+        "auc": 0.5
+      }
+    }
+  },
+  "paired_comparisons": {
+    "boosting_rules": {
+      "delta_log_loss": -0.0035361730316719677,
+      "approximate_95pct_date_block_interval": [
+        -0.00893201744756944,
+        0.0019911451775031968
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "boosting_jev": {
+      "delta_log_loss": -0.00266310664277398,
+      "approximate_95pct_date_block_interval": [
+        -0.015417275953675324,
+        0.010219700966021053
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "logistic_rules": {
+      "delta_log_loss": -4.668559834884012e-05,
+      "approximate_95pct_date_block_interval": [
+        -0.007012570327263615,
+        0.007154759610280507
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "logistic_jev": {
+      "delta_log_loss": 0.00680537433858222,
+      "approximate_95pct_date_block_interval": [
+        -0.01947429598140068,
+        0.036573556152741535
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    }
+  },
+  "portfolios": {
+    "boosting__market_and_metadata": {
+      "threshold_from_validation": 0.5539004719889049,
+      "trades": 44,
+      "net_return": -0.022444791891310656,
+      "gross_return_same_positions": -0.017673811824271746,
+      "max_drawdown": -0.02541619522114713,
+      "transaction_costs_initial_equity": 0.004339488582372531,
+      "borrow_costs_initial_equity": 0.0004314914846663997,
+      "turnover": 8.81817147944076,
+      "annualized_daily_sharpe_zero_cash_rate": -1.3294165290910753,
+      "trade_win_rate": 0.3181818181818182,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__market_metadata_rules": {
+      "threshold_from_validation": 0.5407125317952081,
+      "trades": 56,
+      "net_return": -0.028987123696974204,
+      "gross_return_same_positions": -0.02293629641135475,
+      "max_drawdown": -0.03487378606765046,
+      "transaction_costs_initial_equity": 0.0055030814229161526,
+      "borrow_costs_initial_equity": 0.0005477458627033078,
+      "turnover": 11.23276061718769,
+      "annualized_daily_sharpe_zero_cash_rate": -1.6024887663734513,
+      "trade_win_rate": 0.3392857142857143,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__market_metadata_jev": {
+      "threshold_from_validation": 0.5305055794510285,
+      "trades": 62,
+      "net_return": -0.04675128681501295,
+      "gross_return_same_positions": -0.0401072619948285,
+      "max_drawdown": -0.04812750724337944,
+      "transaction_costs_initial_equity": 0.006041960960399839,
+      "borrow_costs_initial_equity": 0.0006020638597845619,
+      "turnover": 12.397796502713197,
+      "annualized_daily_sharpe_zero_cash_rate": -2.258027945752964,
+      "trade_win_rate": 0.3064516129032258,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__market_and_metadata": {
+      "threshold_from_validation": 0.6773206668677623,
+      "trades": 56,
+      "net_return": -0.000944530036202873,
+      "gross_return_same_positions": 0.005196828837352285,
+      "max_drawdown": -0.01803923590871348,
+      "transaction_costs_initial_equity": 0.005587163262796265,
+      "borrow_costs_initial_equity": 0.000554195610758801,
+      "turnover": 11.199279020345214,
+      "annualized_daily_sharpe_zero_cash_rate": -0.030352232050733122,
+      "trade_win_rate": 0.39285714285714285,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__market_metadata_rules": {
+      "threshold_from_validation": 0.6746875070785037,
+      "trades": 58,
+      "net_return": -0.0026756678887476237,
+      "gross_return_same_positions": 0.0036660418587979304,
+      "max_drawdown": -0.016915597062626353,
+      "transaction_costs_initial_equity": 0.0057693773626134055,
+      "borrow_costs_initial_equity": 0.0005723323849320646,
+      "turnover": 11.59260850760093,
+      "annualized_daily_sharpe_zero_cash_rate": -0.0969277845987655,
+      "trade_win_rate": 0.3620689655172414,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__market_metadata_jev": {
+      "threshold_from_validation": 0.6902522297367749,
+      "trades": 55,
+      "net_return": -0.0066083081719175985,
+      "gross_return_same_positions": -0.0006042769865809428,
+      "max_drawdown": -0.019941245762415738,
+      "transaction_costs_initial_equity": 0.0054618546046616145,
+      "borrow_costs_initial_equity": 0.0005421765806749787,
+      "turnover": 10.99589671927455,
+      "annualized_daily_sharpe_zero_cash_rate": -0.2685048187197853,
+      "trade_win_rate": 0.38181818181818183,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    }
+  },
+  "usable_events_by_year": {
+    "2018": 189,
+    "2019": 204,
+    "2020": 306,
+    "2021": 209,
+    "2022": 180,
+    "2023": 138,
+    "2024": 138,
+    "2025": 183
+  },
+  "usable_events_by_symbol": {
+    "AAL": 35,
+    "ABBV": 14,
+    "ABT": 11,
+    "ADBE": 11,
+    "ADI": 10,
+    "AEP": 15,
+    "AFL": 5,
+    "ALL": 6,
+    "AMAT": 10,
+    "AMD": 19,
+    "AMGN": 21,
+    "AMZN": 5,
+    "APD": 2,
+    "AVGO": 19,
+    "AXP": 2,
+    "BA": 25,
+    "BDX": 20,
+    "BLK": 4,
+    "BMY": 8,
+    "CAT": 10,
+    "CCL": 33,
+    "CI": 13,
+    "CMCSA": 13,
+    "CME": 13,
+    "CMI": 16,
+    "COF": 1,
+    "COP": 2,
+    "CRM": 13,
+    "CSCO": 5,
+    "CSX": 22,
+    "CVS": 5,
+    "CVX": 3,
+    "D": 18,
+    "DAL": 24,
+    "DD": 12,
+    "DE": 1,
+    "DG": 13,
+    "DHR": 13,
+    "DIS": 3,
+    "DLTR": 11,
+    "DOW": 2,
+    "DUK": 19,
+    "ECL": 13,
+    "ED": 22,
+    "EMR": 12,
+    "EOG": 10,
+    "ETN": 7,
+    "EXC": 15,
+    "F": 19,
+    "FCX": 13,
+    "FDX": 11,
+    "GD": 5,
+    "GE": 8,
+    "GILD": 8,
+    "GIS": 3,
+    "GM": 22,
+    "GS": 1,
+    "HAL": 4,
+    "HD": 7,
+    "HLT": 16,
+    "HON": 30,
+    "HUM": 29,
+    "IBM": 12,
+    "ICE": 9,
+    "INTC": 11,
+    "INTU": 9,
+    "ITW": 4,
+    "JNJ": 3,
+    "KHC": 17,
+    "KLAC": 13,
+    "LMT": 10,
+    "LOW": 20,
+    "LRCX": 6,
+    "LUV": 26,
+    "MA": 5,
+    "MAR": 6,
+    "MCD": 1,
+    "MDLZ": 25,
+    "MDT": 11,
+    "MET": 13,
+    "MMM": 12,
+    "MPC": 15,
+    "MU": 22,
+    "NEE": 7,
+    "NEM": 13,
+    "NFLX": 8,
+    "NKE": 6,
+    "NOC": 10,
+    "NSC": 36,
+    "NUE": 10,
+    "NVDA": 4,
+    "ORCL": 2,
+    "OXY": 24,
+    "PEG": 1,
+    "PEP": 2,
+    "PFE": 4,
+    "PH": 13,
+    "PNC": 2,
+    "PRU": 7,
+    "PSX": 15,
+    "QCOM": 18,
+    "RCL": 47,
+    "REGN": 16,
+    "ROST": 6,
+    "SBUX": 12,
+    "SCHW": 5,
+    "SHW": 32,
+    "SO": 4,
+    "STLD": 12,
+    "STT": 1,
+    "SYK": 20,
+    "T": 24,
+    "TFC": 1,
+    "TGT": 6,
+    "TJX": 5,
+    "TMO": 22,
+    "TMUS": 31,
+    "TRV": 2,
+    "UAL": 24,
+    "UNH": 2,
+    "URI": 34,
+    "USB": 5,
+    "V": 7,
+    "VLO": 8,
+    "VRTX": 9,
+    "VZ": 3,
+    "WEC": 3,
+    "WMT": 1,
+    "XEL": 11
+  },
+  "jev_feature_variation": {
+    "jev_debt_refinancing_disclosed": {
+      "min": 0.0,
+      "max": 1.0,
+      "std": 0.40719195817018666
+    },
+    "jev_debt_refinancing_unclear": {
+      "min": 0.0,
+      "max": 0.29,
+      "std": 0.03439299966165702
+    },
+    "jev_maturity_extension_disclosed": {
+      "min": 0.0,
+      "max": 1.0,
+      "std": 0.2947461993216632
+    },
+    "jev_maturity_extension_unclear": {
+      "min": 0.0,
+      "max": 0.08,
+      "std": 0.002984338321608199
+    },
+    "jev_covenant_waiver_disclosed": {
+      "min": 0.0,
+      "max": 0.99,
+      "std": 0.08665721837121698
+    },
+    "jev_covenant_waiver_unclear": {
+      "min": 0.0,
+      "max": 0.18,
+      "std": 0.006250993476985894
+    },
+    "jev_capital_expenditure_funding_disclosed": {
+      "min": 0.0,
+      "max": 1.0,
+      "std": 0.14737702640331501
+    },
+    "jev_capital_expenditure_funding_unclear": {
+      "min": 0.0,
+      "max": 0.27,
+      "std": 0.02156171588052383
+    }
+  },
+  "primary_result": {
+    "delta_log_loss": -0.00266310664277398,
+    "approximate_95pct_date_block_interval": [
+      -0.015417275953675324,
+      0.010219700966021053
+    ],
+    "block_sessions": 20,
+    "replicates": 1000,
+    "negative_favors_added_features": true
+  },
+  "limitations": [
+    "Current convenience universe has survivorship and issuer identity biases.",
+    "Retrospective adjusted prices and pretrained text model may contain later information.",
+    "Prices are daily bar proxies, not executable quotes.",
+    "Only four audited disclosure concepts are tested, not arbitrary text value.",
+    "No test-label tuning; all sources are historical.",
+    "Four text features do not test the value of all possible language-model inputs.",
+    "Issuer/date dependence is approximated by 20-session blocks; intervals are exploratory, not proof.",
+    "No tuning after viewing test results; secondary learner/rules/year analyses are descriptive.",
+    "Portfolio equity is a costed hedged diagnostic with approximate adjusted daily opens, no execution validation."
+  ]
+}

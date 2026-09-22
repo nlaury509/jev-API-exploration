@@ -1,0 +1,87 @@
+{
+  "created_at": "2026-09-21T20:09:46.160443+00:00",
+  "labeler": "coding assistant",
+  "method": "Entire primary texts reviewed and labels saved before targeted inference. Targeted positive-class sample, not population evaluation. Original rubric and baseline remain unchanged.",
+  "questions_sha256": "04565df2ebf0212ef278ec6bf9942fcae23c615a2ff63bc0cbd01933e483080c",
+  "cases": {
+    "0001193125-24-201513": {
+      "symbol": "AUDACY",
+      "text_sha256": "e6185de476b7ce7fdeec1171294baa5f0ebab162537ed75947a7e86de45d0cf9",
+      "review_note": "Executed DIP forbearance and limited receivables waiver concern specific defaults. Executed amendment extends expiration of receivables revolving period, counted as credit-facility expiration extension; no extension inferred from forbearance alone. Debt equitization plan alone is not an explicit refinancing with new proceeds.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "disclosed",
+          "evidence": [
+            "to extend the revolving period end date under the RPA"
+          ]
+        },
+        "covenant_waiver": {
+          "label": "disclosed",
+          "evidence": [
+            "the DIP Lenders agreed to refrain from exercising any of their rights or remedies under the DIP Credit Agreement"
+          ]
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000950170-24-104387": {
+      "symbol": "BIOL",
+      "text_sha256": "2655e987db4dbd82c68ea7df59ef73dd6975eb683c7c2a0d98c357685a0c3c39",
+      "review_note": "Executed forbearance concerns existing default; bridge loan finances operating/restructuring expenses, not capex. Specific planned bridge-to-DIP roll-up is counted as intended refinancing under the rubric, although requested DIP financing remains conditional; this is a judgment-sensitive reference. Non-acceleration is not an executed extension of contractual maturity.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "being “rolled-up” in the DIP Loan to be provided to the Company in the Chapter 11 case"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "disclosed",
+          "evidence": [
+            "the Company and the Agent entered into a Forbearance Agreement, dated August 31, 2024"
+          ]
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-25-136125": {
+      "symbol": "IRBT",
+      "text_sha256": "e91a5ad6d7b2b824bd2dc9c3ca86ef3b4eeb222b8aec0b71cc3f8e77a530c135",
+      "review_note": "Granted covenant waiver and its extensions explicitly disclosed. Extension of waiver period is not a debt maturity extension. Repayment uses restricted existing cash, not new proceeds; speculation about inability to refinance is not intended refinancing.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "disclosed",
+          "evidence": [
+            "the Lenders waived, until May 6, 2025"
+          ]
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    }
+  }
+}

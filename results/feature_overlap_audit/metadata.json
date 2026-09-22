@@ -1,0 +1,13 @@
+{
+  "source_sha256": "3cd91d8a9d2776c3b2de4fb110ad2315b0d6b5bf2c1b05f4e92327c1ed44e25f",
+  "split": "train",
+  "n": 1088,
+  "seed": 42,
+  "shuffle_references": 200,
+  "notes": [
+    "No outcomes read, no models refit, no inference calls.",
+    "MI uses four fixed probability bins and is descriptive, not a return-predictiveness measure.",
+    "Shuffling ignores issuer/date dependence; references are not calibrated hypothesis tests.",
+    "Pairwise association cannot establish redundancy; joint binned MI is also not a full conditional signal test."
+  ]
+}

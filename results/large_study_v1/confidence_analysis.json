@@ -1,0 +1,380 @@
+[
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 67,
+    "mean_probability": 0.3539476701901194,
+    "positive_frequency": 0.582089552238806,
+    "mean_excess_return_bps": 55.873207839490206
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 77,
+    "mean_probability": 0.42419705363099275,
+    "positive_frequency": 0.42857142857142855,
+    "mean_excess_return_bps": -27.24107511546809
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 66,
+    "mean_probability": 0.4747445899918893,
+    "positive_frequency": 0.45454545454545453,
+    "mean_excess_return_bps": 45.39630700187344
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 61,
+    "mean_probability": 0.5231436638376609,
+    "positive_frequency": 0.4426229508196721,
+    "mean_excess_return_bps": -52.641010789734466
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 36,
+    "mean_probability": 0.5741220068208919,
+    "positive_frequency": 0.2777777777777778,
+    "mean_excess_return_bps": -130.98611767763168
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 11,
+    "mean_probability": 0.6268391389263543,
+    "positive_frequency": 0.2727272727272727,
+    "mean_excess_return_bps": -191.46368040171146
+  },
+  {
+    "model": "boosting__market_and_metadata",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 3,
+    "mean_probability": 0.722536940210779,
+    "positive_frequency": 1.0,
+    "mean_excess_return_bps": 210.08406829836474
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 76,
+    "mean_probability": 0.3551383229411873,
+    "positive_frequency": 0.5789473684210527,
+    "mean_excess_return_bps": 63.88715655390265
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 73,
+    "mean_probability": 0.4240457684420658,
+    "positive_frequency": 0.3835616438356164,
+    "mean_excess_return_bps": -59.41312233997631
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 63,
+    "mean_probability": 0.4757339739556607,
+    "positive_frequency": 0.4444444444444444,
+    "mean_excess_return_bps": 9.065396920123865
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 66,
+    "mean_probability": 0.5272406130047205,
+    "positive_frequency": 0.48484848484848486,
+    "mean_excess_return_bps": 15.771629949527572
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 29,
+    "mean_probability": 0.569615360646028,
+    "positive_frequency": 0.2413793103448276,
+    "mean_excess_return_bps": -161.25575775872883
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 13,
+    "mean_probability": 0.6357270731557296,
+    "positive_frequency": 0.38461538461538464,
+    "mean_excess_return_bps": -180.94260400959277
+  },
+  {
+    "model": "boosting__market_metadata_rules",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 1,
+    "mean_probability": 0.7128142294915578,
+    "positive_frequency": 1.0,
+    "mean_excess_return_bps": 138.00550659906153
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 72,
+    "mean_probability": 0.3595962539023928,
+    "positive_frequency": 0.5972222222222222,
+    "mean_excess_return_bps": 87.77440870579724
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 67,
+    "mean_probability": 0.4274865769028081,
+    "positive_frequency": 0.34328358208955223,
+    "mean_excess_return_bps": -66.2173236193503
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 79,
+    "mean_probability": 0.474304627629366,
+    "positive_frequency": 0.4810126582278481,
+    "mean_excess_return_bps": 7.782046765205045
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 54,
+    "mean_probability": 0.5210042413450756,
+    "positive_frequency": 0.4074074074074074,
+    "mean_excess_return_bps": -72.88452806653778
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 27,
+    "mean_probability": 0.5697305460609753,
+    "positive_frequency": 0.2962962962962963,
+    "mean_excess_return_bps": -81.05121312981386
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 15,
+    "mean_probability": 0.6357680316814392,
+    "positive_frequency": 0.3333333333333333,
+    "mean_excess_return_bps": -159.59278198300808
+  },
+  {
+    "model": "boosting__market_metadata_jev",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 7,
+    "mean_probability": 0.7355960363377153,
+    "positive_frequency": 0.8571428571428571,
+    "mean_excess_return_bps": 179.95839863673987
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 110,
+    "mean_probability": 0.2556376647497706,
+    "positive_frequency": 0.4636363636363636,
+    "mean_excess_return_bps": -7.222138806576265
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 22,
+    "mean_probability": 0.4249553673440109,
+    "positive_frequency": 0.5909090909090909,
+    "mean_excess_return_bps": 68.68656618092086
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 40,
+    "mean_probability": 0.472665434339486,
+    "positive_frequency": 0.375,
+    "mean_excess_return_bps": -122.01178888466646
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 34,
+    "mean_probability": 0.5224517943070538,
+    "positive_frequency": 0.38235294117647056,
+    "mean_excess_return_bps": -69.95833410041988
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 31,
+    "mean_probability": 0.5714113025515016,
+    "positive_frequency": 0.5161290322580645,
+    "mean_excess_return_bps": 108.21923715204125
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 33,
+    "mean_probability": 0.6471671707654519,
+    "positive_frequency": 0.42424242424242425,
+    "mean_excess_return_bps": -50.825955629477505
+  },
+  {
+    "model": "logistic__market_and_metadata",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 51,
+    "mean_probability": 0.7946611459332089,
+    "positive_frequency": 0.45098039215686275,
+    "mean_excess_return_bps": 2.0489047252885704
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 102,
+    "mean_probability": 0.24912769062991275,
+    "positive_frequency": 0.4411764705882353,
+    "mean_excess_return_bps": -30.271416809780245
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 32,
+    "mean_probability": 0.4218972954611754,
+    "positive_frequency": 0.5625,
+    "mean_excess_return_bps": 81.2592783092398
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 37,
+    "mean_probability": 0.4781486460185378,
+    "positive_frequency": 0.35135135135135137,
+    "mean_excess_return_bps": -129.70131390673495
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 38,
+    "mean_probability": 0.5253127338874647,
+    "positive_frequency": 0.47368421052631576,
+    "mean_excess_return_bps": -31.42663209077964
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 25,
+    "mean_probability": 0.5752243656348449,
+    "positive_frequency": 0.56,
+    "mean_excess_return_bps": 177.98014530418993
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 35,
+    "mean_probability": 0.6443784096587201,
+    "positive_frequency": 0.4,
+    "mean_excess_return_bps": -62.60257976052931
+  },
+  {
+    "model": "logistic__market_metadata_rules",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 52,
+    "mean_probability": 0.7925874797107733,
+    "positive_frequency": 0.4423076923076923,
+    "mean_excess_return_bps": -10.350324401909967
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0,
+    "upper": 0.4,
+    "n": 105,
+    "mean_probability": 0.2512488064089957,
+    "positive_frequency": 0.4857142857142857,
+    "mean_excess_return_bps": -2.401307588537796
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.4,
+    "upper": 0.45,
+    "n": 28,
+    "mean_probability": 0.4229715762256982,
+    "positive_frequency": 0.5,
+    "mean_excess_return_bps": 39.27379033959443
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.45,
+    "upper": 0.5,
+    "n": 39,
+    "mean_probability": 0.4799595634554726,
+    "positive_frequency": 0.41025641025641024,
+    "mean_excess_return_bps": -86.36292450329437
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.5,
+    "upper": 0.55,
+    "n": 33,
+    "mean_probability": 0.5214003434658201,
+    "positive_frequency": 0.36363636363636365,
+    "mean_excess_return_bps": -82.99431515877589
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.55,
+    "upper": 0.6,
+    "n": 29,
+    "mean_probability": 0.5742905399903797,
+    "positive_frequency": 0.5517241379310345,
+    "mean_excess_return_bps": 152.6334767006592
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.6,
+    "upper": 0.7,
+    "n": 34,
+    "mean_probability": 0.6500860529187523,
+    "positive_frequency": 0.38235294117647056,
+    "mean_excess_return_bps": -115.8056651191273
+  },
+  {
+    "model": "logistic__market_metadata_jev",
+    "lower": 0.7,
+    "upper": 1,
+    "n": 53,
+    "mean_probability": 0.8069862522503353,
+    "positive_frequency": 0.4339622641509434,
+    "mean_excess_return_bps": 0.19071023157158015
+  }
+]

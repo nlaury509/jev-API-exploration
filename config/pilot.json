@@ -1,0 +1,12 @@
+{
+  "symbols": ["AAPL", "MSFT", "AMZN", "JPM", "BAC", "CVX", "CAT", "UNP", "WMT", "JNJ", "PG", "T", "VZ", "F", "GM", "DAL", "UAL", "AAL", "CCL", "RCL", "OXY", "FCX", "DUK", "SO", "NEE", "D", "DOW", "BA", "UPS", "FDX"],
+  "benchmark": "SPY",
+  "start": "2024-01-01",
+  "end": "2026-01-01",
+  "items": ["1.01", "1.02", "2.03", "2.04", "3.02"],
+  "max_filings": 200,
+  "seed": 42,
+  "timeframe": "1Day",
+  "price_lookback_days": 30,
+  "price_forward_days": 10
+}

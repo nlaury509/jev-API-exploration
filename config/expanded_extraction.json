@@ -1,0 +1,59 @@
+{
+  "model": "jev-1.13.0",
+  "selection_seed": "audit-v1",
+  "limit": 18,
+  "max_state_characters": 24000,
+  "input_usd_per_million_tokens": 0.042,
+  "pricing_source": "https://docs.typesafe.ai/models",
+  "pricing_checked_on": "2026-09-21",
+  "questions": {
+    "debt_refinancing": {
+      "type": "choice",
+      "instructions": "Does the supplied filing explicitly disclose an actual or specifically intended refinancing of existing debt? Count repayment or redemption using new financing proceeds and replacement of an existing credit facility. An amendment without an explicit replacement or repayment is not sufficient. Do not infer refinancing just because old and new debt are mentioned.",
+      "criteria": {
+        "disclosed": "The text explicitly states new financing repays, redeems, refinances or replaces existing debt or a credit facility.",
+        "not_disclosed": "No such action or specific intention is stated in the supplied text; a hypothetical permission or general corporate purposes alone does not count.",
+        "unclear": "Relevant wording exists but is ambiguous about whether new financing replaces or repays existing debt."
+      }
+    },
+    "maturity_extension": {
+      "type": "choice",
+      "instructions": "Does the supplied filing explicitly say the maturity or expiration of an EXISTING debt obligation or credit facility has been extended through an executed amendment? Require an explicit extension statement; do not compare dates or infer an extension from refinancing, an amended agreement title, lender names, or a newly issued instrument. An unexercised option to extend in the future does not count.",
+      "criteria": {
+        "disclosed": "An executed extension of an existing debt or facility maturity/expiration is explicitly stated.",
+        "not_disclosed": "No executed maturity extension is explicitly stated. A future extension option, replacement instrument, or new maturity date alone is insufficient.",
+        "unclear": "An extension is discussed but whether it has been executed or applies to an existing facility is ambiguous."
+      }
+    },
+    "covenant_waiver": {
+      "type": "choice",
+      "instructions": "Does the supplied filing explicitly state lenders actually granted a waiver or forbearance concerning an actual or anticipated breach of a borrowing covenant or a default? Do not count lists of hypothetical defaults, normal amendment language, grace periods, or a general ability to waive terms.",
+      "criteria": {
+        "disclosed": "A lender-granted waiver or forbearance of an actual or anticipated covenant breach/default is explicitly disclosed.",
+        "not_disclosed": "No such granted waiver or forbearance is disclosed; hypothetical default terms and general waiver powers do not count.",
+        "unclear": "A waiver or breach is mentioned but the text does not establish whether lenders granted the waiver/forbearance."
+      }
+    },
+    "capital_expenditure_funding": {
+      "type": "choice",
+      "instructions": "Does the supplied filing explicitly link the newly described financing to funding construction, equipment, facilities, or other capital expenditures? Include a specifically stated intended use. Do not count a purchase announcement with no financing link, company/business acquisitions, or general corporate purposes with no explicit capital-expenditure use.",
+      "criteria": {
+        "disclosed": "The financing is explicitly linked to funding capital expenditures, construction, facilities or equipment.",
+        "not_disclosed": "No explicit financing-to-capital-expenditure link is stated in the supplied text.",
+        "unclear": "Capital expenditures and financing are discussed but the wording leaves their connection ambiguous."
+      }
+    }
+  },
+  "exclude_accessions": [
+    "0000037996-24-000235",
+    "0001104659-24-026564",
+    "0000012927-24-000037",
+    "0001104659-24-096572",
+    "0000950142-25-000285",
+    "0001683168-24-000244"
+  ],
+  "require_reference": true,
+  "baseline_sha256": "22d2120ba659b352c1f51bc0634d17323f5c85f29671b0a834bba1a26032b7d0",
+  "defined_at": "2026-09-21T20:03:39.798707+00:00",
+  "study": "18 fresh hash-selected filings; unchanged Jev questions; rules frozen before reference review"
+}

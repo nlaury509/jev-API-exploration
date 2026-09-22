@@ -1,0 +1,555 @@
+{
+  "config": {
+    "model": "jev-1.13.0",
+    "max_state_characters": 24000,
+    "input_usd_per_million_tokens": 0.042,
+    "pricing_source": "https://docs.typesafe.ai/models",
+    "study_id": "fifty_questions_v1",
+    "questions": {
+      "debt_refinancing": {
+        "type": "choice",
+        "instructions": "Does the supplied filing explicitly disclose an actual or specifically intended refinancing of existing debt? Count repayment or redemption using new financing proceeds and replacement of an existing credit facility. An amendment without an explicit replacement or repayment is not sufficient. Do not infer refinancing just because old and new debt are mentioned.",
+        "criteria": {
+          "disclosed": "The text explicitly states new financing repays, redeems, refinances or replaces existing debt or a credit facility.",
+          "not_disclosed": "No such action or specific intention is stated in the supplied text; a hypothetical permission or general corporate purposes alone does not count.",
+          "unclear": "Relevant wording exists but is ambiguous about whether new financing replaces or repays existing debt."
+        }
+      },
+      "maturity_extension": {
+        "type": "choice",
+        "instructions": "Does the supplied filing explicitly say the maturity or expiration of an EXISTING debt obligation or credit facility has been extended through an executed amendment? Require an explicit extension statement; do not compare dates or infer an extension from refinancing, an amended agreement title, lender names, or a newly issued instrument. An unexercised option to extend in the future does not count.",
+        "criteria": {
+          "disclosed": "An executed extension of an existing debt or facility maturity/expiration is explicitly stated.",
+          "not_disclosed": "No executed maturity extension is explicitly stated. A future extension option, replacement instrument, or new maturity date alone is insufficient.",
+          "unclear": "An extension is discussed but whether it has been executed or applies to an existing facility is ambiguous."
+        }
+      },
+      "covenant_waiver": {
+        "type": "choice",
+        "instructions": "Does the supplied filing explicitly state lenders actually granted a waiver or forbearance concerning an actual or anticipated breach of a borrowing covenant or a default? Do not count lists of hypothetical defaults, normal amendment language, grace periods, or a general ability to waive terms.",
+        "criteria": {
+          "disclosed": "A lender-granted waiver or forbearance of an actual or anticipated covenant breach/default is explicitly disclosed.",
+          "not_disclosed": "No such granted waiver or forbearance is disclosed; hypothetical default terms and general waiver powers do not count.",
+          "unclear": "A waiver or breach is mentioned but the text does not establish whether lenders granted the waiver/forbearance."
+        }
+      },
+      "capital_expenditure_funding": {
+        "type": "choice",
+        "instructions": "Does the supplied filing explicitly link the newly described financing to funding construction, equipment, facilities, or other capital expenditures? Include a specifically stated intended use. Do not count a purchase announcement with no financing link, company/business acquisitions, or general corporate purposes with no explicit capital-expenditure use.",
+        "criteria": {
+          "disclosed": "The financing is explicitly linked to funding capital expenditures, construction, facilities or equipment.",
+          "not_disclosed": "No explicit financing-to-capital-expenditure link is stated in the supplied text.",
+          "unclear": "Capital expenditures and financing are discussed but the wording leaves their connection ambiguous."
+        }
+      },
+      "liquidity_capacity_change": {
+        "type": "choice",
+        "instructions": "How does the described transaction change available financing capacity versus the prior arrangement described in the same filing? Distinguish total commitments from refinancing proceeds. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "increase": "Explicit increase in total available committed financing.",
+          "replacement": "Explicit replacement or renewal without an increase or decrease.",
+          "decrease": "Explicit reduction or removal of available financing.",
+          "mixed": "Both increases and decreases without a clear net direction.",
+          "unknown": "No supported before/after comparison."
+        }
+      },
+      "debt_principal_change": {
+        "type": "choice",
+        "instructions": "What net change in debt principal follows from the announced transactions, including repayments explicitly linked in this filing? Do not equate an undrawn commitment with debt incurred. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "increase": "New borrowing exceeds disclosed linked repayments.",
+          "unchanged": "Explicit equal replacement or unchanged outstanding principal.",
+          "decrease": "Repayments exceed linked new borrowing.",
+          "mixed": "Multiple transactions with conflicting changes and no supported net direction.",
+          "unknown": "Net principal change cannot be established."
+        }
+      },
+      "borrowing_terms_change": {
+        "type": "choice",
+        "instructions": "Relative to the old terms described in this document, do interest margins, fees, collateral or covenant terms become more restrictive for the borrower? Ignore maturity changes for this question. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "tighter": "Explicit higher spread/fees, added collateral, or tighter covenants without stated offsetting concessions.",
+          "similar": "Explicitly unchanged or substantially similar terms.",
+          "looser": "Explicit lower spread/fees, released collateral or relaxed covenants without offsetting tightening.",
+          "mixed": "Both tightening and loosening.",
+          "unknown": "No sufficient comparison is given."
+        }
+      },
+      "shareholder_dilution_exposure": {
+        "type": "choice",
+        "instructions": "What potential common shareholder dilution is described by this transaction? Include conversion and warrant rights. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "actual": "Common shares issued or issuance contractually committed.",
+          "conditional": "Conversion, warrants or other contingent common share issuance rights, without actual common issuance stated.",
+          "explicitly_none": "Explicit statement the transaction creates no common share dilution or share issuance rights.",
+          "unknown": "Insufficient information or dilution not discussed."
+        }
+      },
+      "transaction_completion": {
+        "type": "choice",
+        "instructions": "What is the execution status of the principal transaction described in this filing? Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "completed": "The principal transaction has closed, become effective, or securities were issued.",
+          "signed_pending": "Binding agreement executed but closing/funding remains pending.",
+          "proposed": "Proposal or intention without a binding executed agreement.",
+          "mixed": "Several equally central transactions have different stages.",
+          "unknown": "Cannot establish execution status."
+        }
+      },
+      "financial_stress_severity": {
+        "type": "choice",
+        "instructions": "What is the strongest company-specific current financial stress explicitly described, excluding hypothetical boilerplate? Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "none_stated": "No current company-specific financial stress is described.",
+          "pressure": "Liquidity pressure, covenant headroom concern, or expected funding shortfall, without actual default.",
+          "default": "Actual payment/covenant default or granted default forbearance, without insolvency proceedings.",
+          "insolvency": "Bankruptcy, insolvency proceedings or explicitly stated substantial going-concern doubt.",
+          "unknown": "Relevant language is too ambiguous."
+        }
+      },
+      "secured_borrowing": {
+        "type": "choice",
+        "instructions": "Does this filing disclose new or amended borrowing secured by identified collateral? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "unsecured_borrowing": {
+        "type": "choice",
+        "instructions": "Does this filing disclose newly issued or amended borrowing explicitly described as unsecured? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "floating_interest_rate": {
+        "type": "choice",
+        "instructions": "Does this filing disclose borrowing with an interest rate tied to SOFR, LIBOR, prime or another variable benchmark? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "fixed_interest_rate": {
+        "type": "choice",
+        "instructions": "Does this filing disclose newly issued borrowing explicitly carrying a fixed interest rate? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "debt_due_within_year": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual existing repayment obligation due within twelve months of the transaction date, as explicitly stated or calculable from dates in this filing? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "bridge_financing": {
+        "type": "choice",
+        "instructions": "Does this filing disclose interim or bridge financing intended to be replaced by longer-term financing? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "acquisition_funding": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a specific link between newly described financing and acquiring a business or company? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "shareholder_distribution_funding": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a specific link between newly described financing and dividends or share repurchases? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "working_capital_funding": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a specific intended use of newly described financing for working capital, not just unspecified general corporate purposes? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "transaction_dollar_size": {
+        "type": "choice",
+        "instructions": "What is the largest stated principal amount or committed facility size of a newly announced or amended financing transaction? Use US-dollar amounts only; do not add overlapping facilities, tranches or repayments. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "under_100m": "Less than $100 million.",
+          "100m_to_1b": "At least $100 million and less than $1 billion.",
+          "1b_to_5b": "At least $1 billion and less than $5 billion.",
+          "5b_or_more": "At least $5 billion.",
+          "unknown": "No unambiguous applicable US-dollar amount."
+        }
+      },
+      "covenant_tightening": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executed change that tightens an existing financial covenant or operating restriction relative to its old terms? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "covenant_relaxation": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executed change that relaxes an existing financial covenant or operating restriction, excluding a one-time waiver? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "additional_collateral": {
+        "type": "choice",
+        "instructions": "Does this filing disclose new collateral pledged for previously unsecured or less-secured existing borrowing? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "additional_guarantees": {
+        "type": "choice",
+        "instructions": "Does this filing disclose new subsidiaries or affiliates added as guarantors of existing borrowing? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "lender_commitment_exit": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a lender withdrawing or reducing a commitment in a way that reduces available financing, not routine replacement by another lender? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "revolver_capacity_increase": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executed increase in total revolving-credit commitments versus the prior facility? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "revolver_capacity_decrease": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executed decrease in total revolving-credit commitments versus the prior facility? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "undrawn_credit_available": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a quantified amount of undrawn or unused borrowing capacity currently available? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "credit_facility_draw": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual drawing of funds from a credit facility, not merely signing or increasing its commitment? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "debt_paid_without_replacement": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual debt repayment or redemption funded from cash or asset-sale proceeds without linked replacement borrowing? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "convertible_debt": {
+        "type": "choice",
+        "instructions": "Does this filing disclose issuance of debt convertible into common shares or their cash equivalent? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "common_equity_issuance": {
+        "type": "choice",
+        "instructions": "Does this filing disclose actual or contractually committed issuance of common shares for financing or acquisition consideration, excluding routine employee awards? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "preferred_equity_issuance": {
+        "type": "choice",
+        "instructions": "Does this filing disclose actual or contractually committed issuance of preferred equity? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "warrant_issuance": {
+        "type": "choice",
+        "instructions": "Does this filing disclose issuance of warrants or other rights to acquire common shares as part of a financing or transaction? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "share_repurchase_program": {
+        "type": "choice",
+        "instructions": "Does this filing disclose authorization, expansion or execution of a company share-repurchase program? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "dividend_increase": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual increase in the regular dividend or declaration of a special dividend? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "dividend_reduction": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a reduction, suspension or elimination of the dividend? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "asset_divestiture": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executed or binding sale of a business, subsidiary or material operating assets, excluding routine inventory sales? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "business_acquisition": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a signed or completed acquisition of a business or controlling interest, excluding equipment purchases? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "contingent_transaction_payments": {
+        "type": "choice",
+        "instructions": "Does this filing disclose earn-outs, contingent consideration or payments contingent on post-transaction operating outcomes? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "guidance_reduction": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a reduction or withdrawal of previously issued revenue, earnings or cash-flow guidance? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "guidance_increase": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an increase in previously issued revenue, earnings or cash-flow guidance? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "restructuring_charges": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a specific announced restructuring, layoff or facility-closure program expected to incur charges? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "asset_impairment": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual impairment or write-down of goodwill, assets or investments? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "adverse_legal_development": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a new adverse company-specific judgment, regulatory action, fine or settlement payment, excluding a generic risk warning? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "major_commercial_loss": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an actual loss or termination of a major customer, supplier or material commercial contract, excluding a debt agreement? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "operating_disruption": {
+        "type": "choice",
+        "instructions": "Does this filing disclose a current company-specific cyberattack, production interruption, strike or other material operating disruption? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "unexpected_executive_exit": {
+        "type": "choice",
+        "instructions": "Does this filing disclose an executive departure explicitly described as abrupt, involuntary or connected to a dispute, rather than assumed unexpected from a routine resignation? Exclude generic hypothetical risk factors and mere contractual permissions. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "disclosed": "The filing explicitly discloses this action, condition or specific intention.",
+          "not_disclosed": "The supplied text does not disclose it; this does not assert it is false in the world.",
+          "unclear": "Relevant evidence is present but too ambiguous to decide."
+        }
+      },
+      "prior_disclosure_status": {
+        "type": "choice",
+        "instructions": "Does the filing explicitly identify its principal transaction as newly announced or previously disclosed? Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "previously_disclosed": "Principal transaction explicitly described as previously announced/disclosed; filing supplies closing or additional details.",
+          "newly_announced": "Text explicitly identifies this as the first announcement of the principal transaction.",
+          "mixed": "Explicitly combines previously announced and new principal transactions.",
+          "unknown": "Prior announcement status is not established. Do not infer newness from the filing date."
+        }
+      },
+      "transaction_relative_scale": {
+        "type": "choice",
+        "instructions": "How large is the principal financing or transaction relative to issuer total assets, total debt, equity value, or annual revenue? Use only an explicit percentage or matching numerator and denominator supplied in this document, prioritizing total assets then total debt then equity then revenue. Use only explicit statements or directly supported comparisons within this filing. Do not use company reputation, later outcomes, or assume missing terms are favorable.",
+        "criteria": {
+          "small": "Less than 5 percent of the applicable issuer-wide denominator.",
+          "medium": "At least 5 percent and less than 20 percent.",
+          "large": "At least 20 percent.",
+          "unknown": "No valid issuer-wide size comparison in the supplied document."
+        }
+      }
+    },
+    "question_order": [
+      "debt_refinancing",
+      "maturity_extension",
+      "covenant_waiver",
+      "capital_expenditure_funding",
+      "liquidity_capacity_change",
+      "debt_principal_change",
+      "borrowing_terms_change",
+      "shareholder_dilution_exposure",
+      "transaction_completion",
+      "financial_stress_severity",
+      "secured_borrowing",
+      "unsecured_borrowing",
+      "floating_interest_rate",
+      "fixed_interest_rate",
+      "debt_due_within_year",
+      "bridge_financing",
+      "acquisition_funding",
+      "shareholder_distribution_funding",
+      "working_capital_funding",
+      "transaction_dollar_size",
+      "covenant_tightening",
+      "covenant_relaxation",
+      "additional_collateral",
+      "additional_guarantees",
+      "lender_commitment_exit",
+      "revolver_capacity_increase",
+      "revolver_capacity_decrease",
+      "undrawn_credit_available",
+      "credit_facility_draw",
+      "debt_paid_without_replacement",
+      "convertible_debt",
+      "common_equity_issuance",
+      "preferred_equity_issuance",
+      "warrant_issuance",
+      "share_repurchase_program",
+      "dividend_increase",
+      "dividend_reduction",
+      "asset_divestiture",
+      "business_acquisition",
+      "contingent_transaction_payments",
+      "guidance_reduction",
+      "guidance_increase",
+      "restructuring_charges",
+      "asset_impairment",
+      "adverse_legal_development",
+      "major_commercial_loss",
+      "operating_disruption",
+      "unexpected_executive_exit",
+      "prior_disclosure_status",
+      "transaction_relative_scale"
+    ],
+    "question_counts": [
+      0,
+      4,
+      10,
+      25,
+      50
+    ],
+    "inference_workers": 4,
+    "max_estimated_inference_usd": 5.0,
+    "primary_comparison": "50 vs 4 with cached original four probabilities held fixed",
+    "status": "Exploratory reuse of previously inspected historical periods; not a new untouched test."
+  },
+  "source_hashes": {
+    "config/fifty_questions.json": "65508e90b124e8987c6849259dd8e9c95d98cd09a47338e2c480451c6b134478",
+    "results/large_study_v1/events_with_features_and_labels.csv": "3cd91d8a9d2776c3b2de4fb110ad2315b0d6b5bf2c1b05f4e92327c1ed44e25f",
+    "results/large_study_v1/summary.json": "56bed9dc87ad28ecbb11264bda87ed5856443b5d8bb8a47113207bec4986c6e3",
+    "results/large_study_v1/test_predictions.csv": "27d1cfc855af60b6dda3732b486c9543098ba69a07fe4c8e9110f55917724af1",
+    "data/large_study_v1/events.json": "6b1741db2b5d5d9c5f87819d5b52da79897ab90496522c68b1f4befe199363a0",
+    "data/large_study_v1/bars.csv": "d27993fdf03e5237ce65db62e7eeb92743bf231581cbc936923268a8b3701532",
+    "config/large_study.json": "0ae7c3be39acae2ade3ee63f823748164a4837a1ceab247535edac79ecea0dae",
+    "event_study.py": "8a1f73f41750d31ebb0b92025b9b322495b16284c8fa18bd99ca01ad45590817",
+    "jev.py": "21c9f4759514b62fb24282c54d114c7e8f11b136c36e9cbdb8f528273dc8a0c6",
+    "feature_study.py": "530513183e0a91f75f2dafe6f644a7ba1005ae78b925f58615bba62f5674b012"
+  },
+  "interpretation": "Exploratory reuse of previously inspected historical periods; not a new untouched test.",
+  "original_four": "Cached original probabilities, identical across all nested feature sets.",
+  "repeated_four": "Asked again inside the 50-question request only to report batch-context stability; not used by predictors.",
+  "created_at": "2026-09-21T21:14:22.871935+00:00"
+}

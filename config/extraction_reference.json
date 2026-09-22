@@ -1,0 +1,156 @@
+{
+  "labeler": "coding assistant",
+  "created_at": "2026-09-21T19:57:15.135250+00:00",
+  "method": "Source-only manual review before first Jev inference. Development audit; not independent expert ground truth. Ambiguous business interpretation is resolved using the explicit question rubric.",
+  "questions_sha256": "04565df2ebf0212ef278ec6bf9942fcae23c615a2ff63bc0cbd01933e483080c",
+  "cases": {
+    "0000037996-24-000235": {
+      "symbol": "F",
+      "text_sha256": "fa00221a49b2e55319ff978a39fab7bca5a335e304360e66f32057ed8e20e29e",
+      "review_note": "Full primary filing reviewed: DOE financing funds battery plants; standard covenant/default provisions do not disclose a granted waiver. No explicit refinancing or executed maturity extension.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "disclosed",
+          "evidence": [
+            "to finance the construction of battery manufacturing plants in Tennessee and Kentucky"
+          ]
+        }
+      }
+    },
+    "0001104659-24-026564": {
+      "symbol": "UAL",
+      "text_sha256": "1944d3082d5b5e01bf6bb718aecd6247ba07216c0fee89cdc606c0427575cdef",
+      "review_note": "Full primary filing reviewed: new term-loan proceeds retire old term debt. Extending Lenders names and new dates do not meet the deliberately strict requirement for an explicit executed maturity-extension statement. No waiver or capex-financing use stated.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "to prepay in full the remaining outstanding principal balance under the Existing Term Loan Facility"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000012927-24-000037": {
+      "symbol": "BA",
+      "text_sha256": "931dd68b563962c62001b38e4530538aefa591039ff841707a690dabdeca413b",
+      "review_note": "Full primary filing reviewed: new facility and termination of two older facilities on the same date suggest replacement, but the text does not explicitly link them. Under the stated strict rule, that is not disclosed. Right to extend is an unexercised option; hypothetical defaults are not waivers.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-24-096572": {
+      "symbol": "CAT",
+      "text_sha256": "9110640d78e4fb061f7d1f0c96e41f028a98b7f323c047a3fa61dca0c3f9c8a6",
+      "review_note": "Full primary filing reviewed: prior 364-day facility explicitly replaced; amendments explicitly extend existing three- and five-year expirations. General corporate purposes is not specific capex funding; no granted waiver.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "The 364-Day Facility replaces Caterpillar’s prior 364-Day Facility"
+          ]
+        },
+        "maturity_extension": {
+          "label": "disclosed",
+          "evidence": [
+            "extends the expiration date of the Three-Year Facility to August 29, 2027"
+          ]
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000950142-25-000285": {
+      "symbol": "CCL",
+      "text_sha256": "2f8936b8fcfccdf7e5b9032a475ea113a515eaf449f5e0accd85725269b12d5b",
+      "review_note": "Full primary filing reviewed: new notes fund redemption of old notes. Later maturity on replacement debt is not an executed extension of an existing instrument. No waiver or capex-financing use.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "The Company used the net proceeds from the Notes Offering, together with cash on hand, to redeem"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001683168-24-000244": {
+      "symbol": "DAL",
+      "text_sha256": "031b13dc424aabd6ee461d06ed7d705317e5400180483499ba4bae806ec7e6f2",
+      "review_note": "Full primary filing reviewed: aircraft purchase is within capex targets, but no financing-to-purchase link is stated. Forward-looking risks about debt/covenants are not actual waivers. No refinancing or executed maturity extension.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    }
+  }
+}

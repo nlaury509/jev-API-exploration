@@ -1,0 +1,89 @@
+[
+  {
+    "accession": "0001193125-18-194609",
+    "question": "debt_principal_change",
+    "raw_choice": "unknown",
+    "probabilities": {
+      "mixed": 0.03,
+      "unchanged": 0.01,
+      "unknown": 0.47,
+      "decrease": 0.01,
+      "increase": 0.48
+    }
+  },
+  {
+    "accession": "0001140361-20-014900",
+    "question": "shareholder_dilution_exposure",
+    "raw_choice": "conditional",
+    "probabilities": {
+      "unknown": 0.49,
+      "actual": 0.0,
+      "conditional": 0.48,
+      "explicitly_none": 0.03
+    }
+  },
+  {
+    "accession": "0000092380-20-000115",
+    "question": "common_equity_issuance",
+    "raw_choice": "not_disclosed",
+    "probabilities": {
+      "disclosed": 0.5,
+      "not_disclosed": 0.49,
+      "unclear": 0.01
+    }
+  },
+  {
+    "accession": "0001104659-20-115690",
+    "question": "debt_due_within_year",
+    "raw_choice": "not_disclosed",
+    "probabilities": {
+      "disclosed": 0.49,
+      "unclear": 0.03,
+      "not_disclosed": 0.48
+    }
+  },
+  {
+    "accession": "0001558370-21-011959",
+    "question": "debt_principal_change",
+    "raw_choice": "unknown",
+    "probabilities": {
+      "unchanged": 0.010000000000000002,
+      "decrease": 0.030000000000000002,
+      "unknown": 0.46,
+      "increase": 0.47000000000000003,
+      "mixed": 0.030000000000000002
+    }
+  },
+  {
+    "accession": "0001193125-21-335223",
+    "question": "common_equity_issuance",
+    "raw_choice": "not_disclosed",
+    "probabilities": {
+      "unclear": 0.01,
+      "not_disclosed": 0.49,
+      "disclosed": 0.5
+    }
+  },
+  {
+    "accession": "0001104659-23-019727",
+    "question": "debt_principal_change",
+    "raw_choice": "unknown",
+    "probabilities": {
+      "mixed": 0.02,
+      "unknown": 0.43,
+      "decrease": 0.01,
+      "increase": 0.44,
+      "unchanged": 0.1
+    }
+  },
+  {
+    "accession": "0001193125-24-228000",
+    "question": "floating_interest_rate",
+    "raw_choice": "disclosed",
+    "probabilities": {
+      "not_disclosed": 0.43,
+      "unclear": 0.15,
+      "disclosed": 0.42
+    }
+  }
+]

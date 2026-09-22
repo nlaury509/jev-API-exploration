@@ -1,0 +1,520 @@
+[
+  {
+    "question": "acquisition_funding",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.8612132352941176,
+    "choice_counts": {
+      "not_disclosed": 937,
+      "disclosed": 151
+    }
+  },
+  {
+    "question": "additional_collateral",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9972426470588235,
+    "choice_counts": {
+      "not_disclosed": 1085,
+      "disclosed": 3
+    }
+  },
+  {
+    "question": "additional_guarantees",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9908088235294118,
+    "choice_counts": {
+      "not_disclosed": 1078,
+      "disclosed": 10
+    }
+  },
+  {
+    "question": "adverse_legal_development",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9880514705882353,
+    "choice_counts": {
+      "not_disclosed": 1075,
+      "disclosed": 13
+    }
+  },
+  {
+    "question": "asset_divestiture",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.8814338235294118,
+    "choice_counts": {
+      "not_disclosed": 959,
+      "disclosed": 129
+    }
+  },
+  {
+    "question": "asset_impairment",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9926470588235294,
+    "choice_counts": {
+      "not_disclosed": 1080,
+      "disclosed": 8
+    }
+  },
+  {
+    "question": "borrowing_terms_change",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 0.8805147058823529,
+    "choice_counts": {
+      "unknown": 958,
+      "similar": 56,
+      "looser": 49,
+      "mixed": 17,
+      "tighter": 8
+    }
+  },
+  {
+    "question": "bridge_financing",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9604779411764706,
+    "choice_counts": {
+      "not_disclosed": 1045,
+      "disclosed": 43
+    }
+  },
+  {
+    "question": "business_acquisition",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9503676470588235,
+    "choice_counts": {
+      "not_disclosed": 1034,
+      "disclosed": 54
+    }
+  },
+  {
+    "question": "capital_expenditure_funding",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9641544117647058,
+    "choice_counts": {
+      "not_disclosed": 1049,
+      "disclosed": 39
+    }
+  },
+  {
+    "question": "common_equity_issuance",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9163602941176471,
+    "choice_counts": {
+      "not_disclosed": 997,
+      "disclosed": 91
+    }
+  },
+  {
+    "question": "contingent_transaction_payments",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9825367647058824,
+    "choice_counts": {
+      "not_disclosed": 1069,
+      "disclosed": 19
+    }
+  },
+  {
+    "question": "convertible_debt",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9834558823529411,
+    "choice_counts": {
+      "not_disclosed": 1070,
+      "disclosed": 18
+    }
+  },
+  {
+    "question": "covenant_relaxation",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9476102941176471,
+    "choice_counts": {
+      "not_disclosed": 1031,
+      "disclosed": 57
+    }
+  },
+  {
+    "question": "covenant_tightening",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9834558823529411,
+    "choice_counts": {
+      "not_disclosed": 1070,
+      "disclosed": 17,
+      "unclear": 1
+    }
+  },
+  {
+    "question": "covenant_waiver",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9862132352941176,
+    "choice_counts": {
+      "not_disclosed": 1073,
+      "disclosed": 15
+    }
+  },
+  {
+    "question": "credit_facility_draw",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.8988970588235294,
+    "choice_counts": {
+      "not_disclosed": 978,
+      "disclosed": 110
+    }
+  },
+  {
+    "question": "debt_due_within_year",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.8354779411764706,
+    "choice_counts": {
+      "not_disclosed": 909,
+      "disclosed": 179
+    }
+  },
+  {
+    "question": "debt_paid_without_replacement",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9788602941176471,
+    "choice_counts": {
+      "not_disclosed": 1065,
+      "disclosed": 23
+    }
+  },
+  {
+    "question": "debt_principal_change",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 0.45036764705882354,
+    "choice_counts": {
+      "unknown": 490,
+      "increase": 368,
+      "unchanged": 187,
+      "decrease": 43
+    }
+  },
+  {
+    "question": "debt_refinancing",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.7288602941176471,
+    "choice_counts": {
+      "not_disclosed": 793,
+      "disclosed": 295
+    }
+  },
+  {
+    "question": "dividend_increase",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9981617647058824,
+    "choice_counts": {
+      "not_disclosed": 1086,
+      "disclosed": 2
+    }
+  },
+  {
+    "question": "dividend_reduction",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9889705882352942,
+    "choice_counts": {
+      "not_disclosed": 1076,
+      "disclosed": 12
+    }
+  },
+  {
+    "question": "financial_stress_severity",
+    "n": 1088,
+    "most_common_choice": "none_stated",
+    "most_common_fraction": 0.9246323529411765,
+    "choice_counts": {
+      "none_stated": 1006,
+      "pressure": 81,
+      "default": 1
+    }
+  },
+  {
+    "question": "fixed_interest_rate",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.6792279411764706,
+    "choice_counts": {
+      "not_disclosed": 739,
+      "disclosed": 349
+    }
+  },
+  {
+    "question": "floating_interest_rate",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.7141544117647058,
+    "choice_counts": {
+      "not_disclosed": 777,
+      "disclosed": 311
+    }
+  },
+  {
+    "question": "guidance_increase",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9981617647058824,
+    "choice_counts": {
+      "not_disclosed": 1086,
+      "disclosed": 2
+    }
+  },
+  {
+    "question": "guidance_reduction",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9935661764705882,
+    "choice_counts": {
+      "not_disclosed": 1081,
+      "disclosed": 7
+    }
+  },
+  {
+    "question": "lender_commitment_exit",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9889705882352942,
+    "choice_counts": {
+      "not_disclosed": 1076,
+      "disclosed": 12
+    }
+  },
+  {
+    "question": "liquidity_capacity_change",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 0.6920955882352942,
+    "choice_counts": {
+      "unknown": 753,
+      "increase": 152,
+      "replacement": 101,
+      "decrease": 80,
+      "mixed": 2
+    }
+  },
+  {
+    "question": "major_commercial_loss",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9871323529411765,
+    "choice_counts": {
+      "not_disclosed": 1074,
+      "disclosed": 14
+    }
+  },
+  {
+    "question": "maturity_extension",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9034926470588235,
+    "choice_counts": {
+      "not_disclosed": 983,
+      "disclosed": 105
+    }
+  },
+  {
+    "question": "operating_disruption",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9990808823529411,
+    "choice_counts": {
+      "not_disclosed": 1087,
+      "disclosed": 1
+    }
+  },
+  {
+    "question": "preferred_equity_issuance",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9871323529411765,
+    "choice_counts": {
+      "not_disclosed": 1074,
+      "disclosed": 14
+    }
+  },
+  {
+    "question": "prior_disclosure_status",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 0.6001838235294118,
+    "choice_counts": {
+      "unknown": 653,
+      "previously_disclosed": 278,
+      "newly_announced": 126,
+      "mixed": 31
+    }
+  },
+  {
+    "question": "restructuring_charges",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9963235294117647,
+    "choice_counts": {
+      "not_disclosed": 1084,
+      "disclosed": 4
+    }
+  },
+  {
+    "question": "revolver_capacity_decrease",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9770220588235294,
+    "choice_counts": {
+      "not_disclosed": 1063,
+      "disclosed": 25
+    }
+  },
+  {
+    "question": "revolver_capacity_increase",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9393382352941176,
+    "choice_counts": {
+      "not_disclosed": 1022,
+      "disclosed": 66
+    }
+  },
+  {
+    "question": "secured_borrowing",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9181985294117647,
+    "choice_counts": {
+      "not_disclosed": 999,
+      "disclosed": 89
+    }
+  },
+  {
+    "question": "share_repurchase_program",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9770220588235294,
+    "choice_counts": {
+      "not_disclosed": 1063,
+      "disclosed": 25
+    }
+  },
+  {
+    "question": "shareholder_dilution_exposure",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 0.8621323529411765,
+    "choice_counts": {
+      "unknown": 938,
+      "conditional": 75,
+      "actual": 68,
+      "explicitly_none": 7
+    }
+  },
+  {
+    "question": "shareholder_distribution_funding",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9283088235294118,
+    "choice_counts": {
+      "not_disclosed": 1010,
+      "disclosed": 78
+    }
+  },
+  {
+    "question": "transaction_completion",
+    "n": 1088,
+    "most_common_choice": "completed",
+    "most_common_fraction": 0.7196691176470589,
+    "choice_counts": {
+      "completed": 783,
+      "signed_pending": 296,
+      "proposed": 6,
+      "mixed": 2,
+      "unknown": 1
+    }
+  },
+  {
+    "question": "transaction_dollar_size",
+    "n": 1088,
+    "most_common_choice": "1b_to_5b",
+    "most_common_fraction": 0.4742647058823529,
+    "choice_counts": {
+      "1b_to_5b": 516,
+      "unknown": 268,
+      "100m_to_1b": 147,
+      "5b_or_more": 141,
+      "under_100m": 16
+    }
+  },
+  {
+    "question": "transaction_relative_scale",
+    "n": 1088,
+    "most_common_choice": "unknown",
+    "most_common_fraction": 1.0,
+    "choice_counts": {
+      "unknown": 1088
+    }
+  },
+  {
+    "question": "undrawn_credit_available",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9080882352941176,
+    "choice_counts": {
+      "not_disclosed": 988,
+      "disclosed": 100
+    }
+  },
+  {
+    "question": "unexpected_executive_exit",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 1.0,
+    "choice_counts": {
+      "not_disclosed": 1088
+    }
+  },
+  {
+    "question": "unsecured_borrowing",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.6461397058823529,
+    "choice_counts": {
+      "not_disclosed": 703,
+      "disclosed": 385
+    }
+  },
+  {
+    "question": "warrant_issuance",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9623161764705882,
+    "choice_counts": {
+      "not_disclosed": 1047,
+      "disclosed": 41
+    }
+  },
+  {
+    "question": "working_capital_funding",
+    "n": 1088,
+    "most_common_choice": "not_disclosed",
+    "most_common_fraction": 0.9540441176470589,
+    "choice_counts": {
+      "not_disclosed": 1038,
+      "disclosed": 50
+    }
+  }
+]

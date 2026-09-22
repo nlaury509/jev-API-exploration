@@ -1,0 +1,13 @@
+{
+  "evaluated_at": "2026-09-21T20:44:35.535864+00:00",
+  "code_sha256": "8a1f73f41750d31ebb0b92025b9b322495b16284c8fa18bd99ca01ad45590817",
+  "numpy": "2.2.2",
+  "pandas": "2.2.3",
+  "scikit_learn": "1.6.1",
+  "supporting_code_sha256": {
+    "collect.py": "ffce7246d351e1b12b82025296e23dec516078fe11ad1445b1fc3bebadb55b58",
+    "large_study.py": "1751f8f21c3b8aedc009a252ebbd56c29f4b052f5ce9ea5825e95e8999e84c6b",
+    "jev.py": "e6979ad5c043a7cf2ad677a589dcfd1c54ea9bd83da1ba923967ebefc8333b9a",
+    "text_baseline.py": "22d2120ba659b352c1f51bc0634d17323f5c85f29671b0a834bba1a26032b7d0"
+  }
+}

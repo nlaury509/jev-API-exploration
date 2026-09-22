@@ -1,0 +1,681 @@
+{
+  "created_at": "2026-09-21T21:22:42.017781+00:00",
+  "status": "Exploratory reuse of previously inspected historical periods; not a new untouched test.",
+  "inference": {
+    "created_at": "2026-09-21T21:22:30.265847+00:00",
+    "completed": 1560,
+    "requested": 1560,
+    "questions_per_document": 50,
+    "decisions": 78000,
+    "complete": true,
+    "failures": [],
+    "estimated_total_usd": 0.9022775580000014,
+    "total_input_tokens": 21482799,
+    "new_records_this_attempt": 1461,
+    "elapsed_seconds_this_attempt": 302.1820564577356,
+    "cost_note": "Successful responses only; failed requests may also be billed."
+  },
+  "split_counts": {
+    "test": 321,
+    "train": 1088,
+    "validation": 138
+  },
+  "metrics": {
+    "boosting__q0": {
+      "question_count": 0,
+      "numeric_features": 193,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5819599740457343,
+        "brier": 0.19604193603021114,
+        "accuracy": 0.7876838235294118,
+        "auc": 0.8709936304438372
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7053176677240417,
+        "brier": 0.2558190925613568,
+        "accuracy": 0.47101449275362317,
+        "auc": 0.49558080808080807
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7214130756053607,
+        "brier": 0.2637369533788246,
+        "accuracy": 0.470404984423676,
+        "auc": 0.42821316614420063
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7426000072898647,
+          "brier": 0.27389304775008644,
+          "accuracy": 0.4420289855072464,
+          "auc": 0.36324786324786323
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7054360451547513,
+          "brier": 0.25607825926279104,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4827130852340936
+        }
+      }
+    },
+    "boosting__q4": {
+      "question_count": 4,
+      "numeric_features": 201,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5869022904125591,
+        "brier": 0.1985063654196614,
+        "accuracy": 0.7766544117647058,
+        "auc": 0.8605334714927653
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7086985390925103,
+        "brier": 0.25716925646114364,
+        "accuracy": 0.4855072463768116,
+        "auc": 0.49537037037037035
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7187499689625868,
+        "brier": 0.2623078707905963,
+        "accuracy": 0.48286604361370716,
+        "auc": 0.4402037617554859
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7300970308806931,
+          "brier": 0.2679193977814997,
+          "accuracy": 0.47101449275362317,
+          "auc": 0.37905982905982905
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7101931681718837,
+          "brier": 0.25807622748598064,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4800720288115246
+        }
+      }
+    },
+    "boosting__q10": {
+      "question_count": 10,
+      "numeric_features": 224,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5803895478555375,
+        "brier": 0.19532477892706246,
+        "accuracy": 0.7922794117647058,
+        "auc": 0.8741191489649893
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7095161287620851,
+        "brier": 0.2577732800241862,
+        "accuracy": 0.4782608695652174,
+        "auc": 0.495580808080808
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7228795711761711,
+        "brier": 0.26403621417878903,
+        "accuracy": 0.4735202492211838,
+        "auc": 0.45207680250783694
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7367327929998274,
+          "brier": 0.27079843791795744,
+          "accuracy": 0.4492753623188406,
+          "auc": 0.4061965811965812
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7124328793091514,
+          "brier": 0.2589368323426948,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4887154861944778
+        }
+      }
+    },
+    "boosting__q25": {
+      "question_count": 25,
+      "numeric_features": 256,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5774264395861004,
+        "brier": 0.19381178289930343,
+        "accuracy": 0.7977941176470589,
+        "auc": 0.8865264077531823
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.7050643517506198,
+        "brier": 0.25574262102672046,
+        "accuracy": 0.5217391304347826,
+        "auc": 0.5054713804713804
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7199226053925707,
+        "brier": 0.2627067981413836,
+        "accuracy": 0.48598130841121495,
+        "auc": 0.4504310344827587
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7358167513405303,
+          "brier": 0.2704377061353015,
+          "accuracy": 0.47101449275362317,
+          "auc": 0.395940170940171
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7079368559891912,
+          "brier": 0.2568769330967897,
+          "accuracy": 0.4972677595628415,
+          "auc": 0.4913565426170468
+        }
+      }
+    },
+    "boosting__q50": {
+      "question_count": 50,
+      "numeric_features": 308,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.578487549287053,
+        "brier": 0.19430983091365023,
+        "accuracy": 0.8106617647058824,
+        "auc": 0.8886055717531687
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.6997527138886026,
+        "brier": 0.25323726214589654,
+        "accuracy": 0.5,
+        "auc": 0.5086279461279462
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.7204815744009498,
+        "brier": 0.2630582804128007,
+        "accuracy": 0.46417445482866043,
+        "auc": 0.4463166144200627
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.7325571336755727,
+          "brier": 0.2689470369164561,
+          "accuracy": 0.43478260869565216,
+          "auc": 0.395940170940171
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.7113754149479558,
+          "brier": 0.2586175787870934,
+          "accuracy": 0.48633879781420764,
+          "auc": 0.4860744297719088
+        }
+      }
+    },
+    "logistic__q0": {
+      "question_count": 0,
+      "numeric_features": 193,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5991009148704437,
+        "brier": 0.2089607699539594,
+        "accuracy": 0.6599264705882353,
+        "auc": 0.7288180934675648
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.8072507115781572,
+        "brier": 0.286535645931488,
+        "accuracy": 0.5289855072463768,
+        "auc": 0.5054713804713804
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.926748951721046,
+        "brier": 0.30189671100549714,
+        "accuracy": 0.4953271028037383,
+        "auc": 0.4827194357366772
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9314994138566044,
+          "brier": 0.305865894579275,
+          "accuracy": 0.5,
+          "auc": 0.4634615384615385
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9231666360122641,
+          "brier": 0.29890355617936964,
+          "accuracy": 0.4918032786885246,
+          "auc": 0.4949579831932773
+        }
+      }
+    },
+    "logistic__q4": {
+      "question_count": 4,
+      "numeric_features": 201,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5928573636117124,
+        "brier": 0.206620601016654,
+        "accuracy": 0.6617647058823529,
+        "auc": 0.7333319788290988
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.8497596923284736,
+        "brier": 0.2934028959683539,
+        "accuracy": 0.5072463768115942,
+        "auc": 0.4962121212121212
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.9335543260596283,
+        "brier": 0.3065088748788503,
+        "accuracy": 0.48286604361370716,
+        "auc": 0.47245297805642633
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9507843590075062,
+          "brier": 0.3104507902013648,
+          "accuracy": 0.463768115942029,
+          "auc": 0.45235042735042735
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9205611864595892,
+          "brier": 0.3035362829962985,
+          "accuracy": 0.4972677595628415,
+          "auc": 0.4839135654261705
+        }
+      }
+    },
+    "logistic__q10": {
+      "question_count": 10,
+      "numeric_features": 224,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5866352646438795,
+        "brier": 0.2038735553788911,
+        "accuracy": 0.6746323529411765,
+        "auc": 0.7421057800081947
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.942322624675777,
+        "brier": 0.30060898687543397,
+        "accuracy": 0.47101449275362317,
+        "auc": 0.49600168350168344
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.9488094324135848,
+        "brier": 0.3119263900171926,
+        "accuracy": 0.4953271028037383,
+        "auc": 0.47217868338558
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9477134396805683,
+          "brier": 0.3086183621087404,
+          "accuracy": 0.4855072463768116,
+          "auc": 0.46452991452991454
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9496359187368432,
+          "brier": 0.31442096843995976,
+          "accuracy": 0.5027322404371585,
+          "auc": 0.47683073229291717
+        }
+      }
+    },
+    "logistic__q25": {
+      "question_count": 25,
+      "numeric_features": 256,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5760565928787065,
+        "brier": 0.1992156047370214,
+        "accuracy": 0.6875,
+        "auc": 0.7557287063468683
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 0.9787696400415703,
+        "brier": 0.30999749651050584,
+        "accuracy": 0.5072463768115942,
+        "auc": 0.49473905723905726
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 0.9770337348199403,
+        "brier": 0.3196602497261719,
+        "accuracy": 0.4797507788161994,
+        "auc": 0.4685344827586207
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 0.9760123109141053,
+          "brier": 0.31346419261119274,
+          "accuracy": 0.4927536231884058,
+          "auc": 0.46816239316239316
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 0.9778039889128652,
+          "brier": 0.3243326862391071,
+          "accuracy": 0.46994535519125685,
+          "auc": 0.4678271308523409
+        }
+      }
+    },
+    "logistic__q50": {
+      "question_count": 50,
+      "numeric_features": 308,
+      "train": {
+        "n": 1088,
+        "positive_fraction": 0.47702205882352944,
+        "log_loss": 0.5456826794791003,
+        "brier": 0.1871714171641861,
+        "accuracy": 0.6856617647058824,
+        "auc": 0.7858596530437403
+      },
+      "validation": {
+        "n": 138,
+        "positive_fraction": 0.4782608695652174,
+        "log_loss": 1.092624736737231,
+        "brier": 0.33928220705201767,
+        "accuracy": 0.4855072463768116,
+        "auc": 0.4770622895622896
+      },
+      "exploratory_test": {
+        "n": 321,
+        "positive_fraction": 0.4517133956386293,
+        "log_loss": 1.0238513163223872,
+        "brier": 0.33023353518974197,
+        "accuracy": 0.49221183800623053,
+        "auc": 0.4799764890282132
+      },
+      "test_by_year": {
+        "2024": {
+          "n": 138,
+          "positive_fraction": 0.43478260869565216,
+          "log_loss": 1.0452836328761672,
+          "brier": 0.3221396046792674,
+          "accuracy": 0.5289855072463768,
+          "auc": 0.4848290598290599
+        },
+        "2025": {
+          "n": 183,
+          "positive_fraction": 0.4644808743169399,
+          "log_loss": 1.0076892415441272,
+          "brier": 0.3363371549189523,
+          "accuracy": 0.4644808743169399,
+          "auc": 0.4728691476590636
+        }
+      }
+    }
+  },
+  "portfolios": {
+    "boosting__q0": {
+      "threshold_from_validation": 0.5539004719889049,
+      "trades": 44,
+      "net_return": -0.022444791891310656,
+      "gross_return_same_positions": -0.017673811824271746,
+      "max_drawdown": -0.02541619522114713,
+      "transaction_costs_initial_equity": 0.004339488582372531,
+      "borrow_costs_initial_equity": 0.0004314914846663997,
+      "turnover": 8.81817147944076,
+      "annualized_daily_sharpe_zero_cash_rate": -1.3294165290910753,
+      "trade_win_rate": 0.3181818181818182,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__q4": {
+      "threshold_from_validation": 0.5305055794510285,
+      "trades": 62,
+      "net_return": -0.04675128681501295,
+      "gross_return_same_positions": -0.0401072619948285,
+      "max_drawdown": -0.04812750724337944,
+      "transaction_costs_initial_equity": 0.006041960960399839,
+      "borrow_costs_initial_equity": 0.0006020638597845619,
+      "turnover": 12.397796502713197,
+      "annualized_daily_sharpe_zero_cash_rate": -2.258027945752964,
+      "trade_win_rate": 0.3064516129032258,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__q10": {
+      "threshold_from_validation": 0.5547140950305268,
+      "trades": 53,
+      "net_return": -0.011790995913493751,
+      "gross_return_same_positions": -0.0060029225648986495,
+      "max_drawdown": -0.015317243462512176,
+      "transaction_costs_initial_equity": 0.005264772434746699,
+      "borrow_costs_initial_equity": 0.0005233009138484187,
+      "turnover": 10.628959260550777,
+      "annualized_daily_sharpe_zero_cash_rate": -0.6353531287408358,
+      "trade_win_rate": 0.37735849056603776,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__q25": {
+      "threshold_from_validation": 0.5530824320097928,
+      "trades": 47,
+      "net_return": -0.01105381067161526,
+      "gross_return_same_positions": -0.005915849415084051,
+      "max_drawdown": -0.018026244404006464,
+      "transaction_costs_initial_equity": 0.004673442391570079,
+      "borrow_costs_initial_equity": 0.00046451886496112895,
+      "turnover": 9.448202324625587,
+      "annualized_daily_sharpe_zero_cash_rate": -0.6604107581129876,
+      "trade_win_rate": 0.425531914893617,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "boosting__q50": {
+      "threshold_from_validation": 0.5427928226516187,
+      "trades": 57,
+      "net_return": -0.017854185281874657,
+      "gross_return_same_positions": -0.011652683493215021,
+      "max_drawdown": -0.024258423093145742,
+      "transaction_costs_initial_equity": 0.005640703269965162,
+      "borrow_costs_initial_equity": 0.0005607985186945203,
+      "turnover": 11.449232377400394,
+      "annualized_daily_sharpe_zero_cash_rate": -1.0054359029523232,
+      "trade_win_rate": 0.38596491228070173,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__q0": {
+      "threshold_from_validation": 0.6773206668677623,
+      "trades": 56,
+      "net_return": -0.000944530036202873,
+      "gross_return_same_positions": 0.005196828837352285,
+      "max_drawdown": -0.01803923590871348,
+      "transaction_costs_initial_equity": 0.005587163262796265,
+      "borrow_costs_initial_equity": 0.000554195610758801,
+      "turnover": 11.199279020345214,
+      "annualized_daily_sharpe_zero_cash_rate": -0.030352232050733122,
+      "trade_win_rate": 0.39285714285714285,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__q4": {
+      "threshold_from_validation": 0.6902522297367749,
+      "trades": 55,
+      "net_return": -0.0066083081719175985,
+      "gross_return_same_positions": -0.0006042769865809428,
+      "max_drawdown": -0.019941245762415738,
+      "transaction_costs_initial_equity": 0.0054618546046616145,
+      "borrow_costs_initial_equity": 0.0005421765806749787,
+      "turnover": 10.99589671927455,
+      "annualized_daily_sharpe_zero_cash_rate": -0.2685048187197853,
+      "trade_win_rate": 0.38181818181818183,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__q10": {
+      "threshold_from_validation": 0.7069193638735848,
+      "trades": 52,
+      "net_return": -0.008894308858006017,
+      "gross_return_same_positions": -0.0032188260970842375,
+      "max_drawdown": -0.016820170351949493,
+      "transaction_costs_initial_equity": 0.005162633288966099,
+      "borrow_costs_initial_equity": 0.000512849471955737,
+      "turnover": 10.388110080816418,
+      "annualized_daily_sharpe_zero_cash_rate": -0.36211026595621043,
+      "trade_win_rate": 0.38461538461538464,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__q25": {
+      "threshold_from_validation": 0.7213980556273011,
+      "trades": 54,
+      "net_return": -0.014648641393476547,
+      "gross_return_same_positions": -0.008773933868313266,
+      "max_drawdown": -0.017523603572739632,
+      "transaction_costs_initial_equity": 0.005343867675463388,
+      "borrow_costs_initial_equity": 0.000530839849699971,
+      "turnover": 10.776844149990024,
+      "annualized_daily_sharpe_zero_cash_rate": -0.5943841333695233,
+      "trade_win_rate": 0.35185185185185186,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    },
+    "logistic__q50": {
+      "threshold_from_validation": 0.7949948110467889,
+      "trades": 41,
+      "net_return": -0.00388997277333214,
+      "gross_return_same_positions": 0.0006072639305021443,
+      "max_drawdown": -0.009676196647188884,
+      "transaction_costs_initial_equity": 0.0040915087020317355,
+      "borrow_costs_initial_equity": 0.00040572800180268414,
+      "turnover": 8.19565744796975,
+      "annualized_daily_sharpe_zero_cash_rate": -0.23065838075677686,
+      "trade_win_rate": 0.4146341463414634,
+      "caveat": "Adjusted daily-open proxies, estimated costs/borrow, no locate or capacity model; not executable performance."
+    }
+  },
+  "paired_comparisons": {
+    "boosting__50_minus_0": {
+      "delta_log_loss": -0.0009315012044108853,
+      "approximate_95pct_date_block_interval": [
+        -0.014505603219581338,
+        0.012724911819893969
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "boosting__50_minus_4": {
+      "delta_log_loss": 0.0017316054383630915,
+      "approximate_95pct_date_block_interval": [
+        -0.009025795529506763,
+        0.012762829550954372
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "logistic__50_minus_0": {
+      "delta_log_loss": 0.0971023646013413,
+      "approximate_95pct_date_block_interval": [
+        0.03415308613646507,
+        0.15669420873970782
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    },
+    "logistic__50_minus_4": {
+      "delta_log_loss": 0.09029699026275909,
+      "approximate_95pct_date_block_interval": [
+        0.03097331294267255,
+        0.14797243928308804
+      ],
+      "block_sessions": 20,
+      "replicates": 1000,
+      "negative_favors_added_features": true
+    }
+  },
+  "train_prior": {
+    "n": 321,
+    "positive_fraction": 0.4517133956386293,
+    "log_loss": 0.6897630334430278,
+    "brier": 0.24830893227145526,
+    "accuracy": 0.5482866043613707,
+    "auc": 0.5
+  },
+  "repeated_four_choice_agreement": 0.9975961538461539,
+  "repeated_four_mean_max_probability_change": 0.0025630341880341885,
+  "median_latency_seconds": 0.6251064785756171,
+  "api_label_argmax_mismatches": 8,
+  "limits": [
+    "Previously inspected 2024–2025 data; exploratory comparison, not fresh confirmation.",
+    "Question count ordering is fixed but not random; this compares particular feature bundles.",
+    "Only original financing-selected 8-K primary text, no prior filings or exhibits added.",
+    "New questions have no comprehensive independent accuracy or calibration audit.",
+    "Current-universe survivorship bias, retrospective adjusted prices, unknown model training cutoff.",
+    "All original learner parameters, horizon and portfolio assumptions kept fixed.",
+    "Intervals are descriptive, not adjusted for multiple comparisons or adaptive research.",
+    "Simulated daily-open proxies with costs, not executable trading results."
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "created_at": "2026-09-21T20:05:14.878481+00:00",
+  "labeler": "coding assistant",
+  "method": "Entire primary source texts reviewed before expanded inference; rubric unchanged from first audit. Assistant labels, not independent financial expert ground truth.",
+  "questions_sha256": "04565df2ebf0212ef278ec6bf9942fcae23c615a2ff63bc0cbd01933e483080c",
+  "cases": {
+    "0001683168-25-007343": {
+      "symbol": "DAL",
+      "text_sha256": "9174381e4db084b9dbf24fc3dd8d9c6556b7ae62f2991fe671cc3bf541ebdd53",
+      "review_note": "Executed amendment refinances term loans and extends existing facility; no waiver or capex use.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "refinance the facility’s existing term loans with the proceeds of replacement term loans"
+          ]
+        },
+        "maturity_extension": {
+          "label": "disclosed",
+          "evidence": [
+            "extend the scheduled maturity of the facility from October 20, 2027 to October 20, 2028"
+          ]
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-24-086075": {
+      "symbol": "RCL",
+      "text_sha256": "db57dad8f2b921d649fee206f34c9aa3c59a8000dce584f61f34e3f7f2d9447f",
+      "review_note": "Cash consideration retires outstanding convertible notes and is explicitly funded by new revolver borrowings. Generic risk disclosures about capital expenditures do not count as specified financing use.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "The Company intends to fund the cash portion of the Exchange Consideration with borrowings under its revolving credit facilities."
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-25-062882": {
+      "symbol": "GM",
+      "text_sha256": "fc2e6f18f84def03cbfe77c4d222bfa1b4bdb14105c10775d01305af0706ced1",
+      "review_note": "Amended/restated facility titles and new maturity dates alone do not meet explicit replacement or executed extension rules. Covenants are normal terms, not granted waivers.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001140361-25-006670": {
+      "symbol": "OXY",
+      "text_sha256": "efb38e4525b1e660237d513568d9a5b7ef3472d7cd7c35c99350b4dbc0197866",
+      "review_note": "Warrant exercise-price amendment, not debt financing. Possible extension of an offer period is not an executed extension of debt maturity.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-24-103188": {
+      "symbol": "RCL",
+      "text_sha256": "aab5399ed1ce75dd2ce107afd7b730bc6fd10b2a7b53eeb10976afdfd02f1752",
+      "review_note": "New notes explicitly fund old notes and finance-lease repayment. New instrument maturity and optional redemption rights are not an extension or waiver.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "which it intends to use to redeem and/or repay certain of its indebtedness"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-25-076871": {
+      "symbol": "D",
+      "text_sha256": "bf81bf36ce727fe6dffeee2230d47fb5993fcb10bfd639f2d5238cb69e440adf",
+      "review_note": "Sustainability revolver amendment explicitly extends maturity. Amending/restating the other facility in entirety is not by itself an explicit refinancing statement under the strict rubric.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "disclosed",
+          "evidence": [
+            "extends the maturity to April 2028"
+          ]
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000950142-24-001201": {
+      "symbol": "CCL",
+      "text_sha256": "61d4fbacdd5462f6beb9b5a28bac7e9e82d23bbb9a9a7ddbfbe5289c236425f3",
+      "review_note": "Explicit use of notes proceeds for redemption. Other amendments reprice loans without an explicit maturity extension; no waiver or capex financing.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "The Company will use the net proceeds from the Notes Offering, together with cash on hand, to redeem its €500 million 7.625% senior unsecured notes due 2026"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-25-023199": {
+      "symbol": "RCL",
+      "text_sha256": "c3df12f639d7dcf27711785c71013ef6378156230510303c1bd1798224a370fc",
+      "review_note": "Convertible notes exchanged for cash and shares; cash comes from liquidity on-hand, unlike the 2024 RCL exchange funded by new revolver borrowing. No explicit use of new financing proceeds to repay debt. Equity consideration alone is not treated as new financing proceeds under this strict rubric. Generic capex-financing risk statement is not a stated transaction use.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000037996-24-000176": {
+      "symbol": "F",
+      "text_sha256": "55a9f316066f6c9a81880e54d1445f686e56dc18827795e4e7f0aecba510954b",
+      "review_note": "Tax benefit preservation plan expiration extended, not a debt obligation or credit facility. No financing, covenant waiver or capex-funding link.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-24-213664": {
+      "symbol": "VZ",
+      "text_sha256": "ab741ef69c44b6240f3667c7b5cab40769b706d701f0fdacf03bf5f15d772d99",
+      "review_note": "Company acquisition agreement. Merger covenants and generic related financing risk are not borrowing covenant waivers or an explicit capex-financing use.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-25-130155": {
+      "symbol": "AAL",
+      "text_sha256": "40c5f1a2fe1be947b9c5add0eff44a86b43820daabd7bc5cebe1f327e59324ac",
+      "review_note": "Explicit incremental loan funding for near-term repayment. Maturity is for newly incurred loans, not an executed extension of existing debt.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "raised $1.0 billion to refinance near term maturities"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-24-050353": {
+      "symbol": "UAL",
+      "text_sha256": "8135110552c9a3c03e9ed90f8fec02a88e54f004f89e8816ff7f0471bda8162a",
+      "review_note": "Tax benefit plan changes and historical extension, not debt. Treasury warrant references do not supply a financing-to-debt repayment or capex link.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-25-073897": {
+      "symbol": "DUK",
+      "text_sha256": "a101ccf5200d43f43ef43f8e23ba8fd95facecf510a1547102a0b127fa4d89dc",
+      "review_note": "Subsidiary membership-interest investment. No explicit link from proceeds to repayment or specific capex; pricing adjustment for debt payments does not establish such a link. Generic financing and construction risk factors do not count.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001104659-25-063656": {
+      "symbol": "RCL",
+      "text_sha256": "768ea6c429860541fcfd1051a675adec5518a8b7729664f36569b48b3a458390",
+      "review_note": "New ship financing explicitly funds a capital asset. Future loan maturity is not an existing maturity extension. Default terms are hypothetical.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "disclosed",
+          "evidence": [
+            "for the financing of the sixth Edge-class ship"
+          ]
+        }
+      }
+    },
+    "0000753308-24-000015": {
+      "symbol": "NEE",
+      "text_sha256": "332801167bccd6248bfd0802a2444a8ef3b7df450e566a282bd2d14b9682d987",
+      "review_note": "New exchangeable notes, with specified portion of proceeds used for capped-call costs. Neither retirement of existing debt nor capex financing is stated. Hypothetical defaults are not waivers.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-24-249922": {
+      "symbol": "AAL",
+      "text_sha256": "27c3c937142640d3a11210df803b036f86a45fe7c3eef60513707051cb3322f2",
+      "review_note": "Expiration extension concerns a tax benefit preservation plan, not credit or debt.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0001193125-24-247611": {
+      "symbol": "BA",
+      "text_sha256": "d4d3b336881f007b47abbe02f8fc730afb787cbc67b005b958c9739372ccf6b8",
+      "review_note": "New equity offering triggers termination of supplemental unused borrowing commitments, but no repayment or explicit replacement of credit facility by new financing is stated. This is another rubric boundary; retain the strict source-only label.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    },
+    "0000950142-25-001921": {
+      "symbol": "CCL",
+      "text_sha256": "17b8953d59ca7a7c8c86004425a529f7b1e8d05e702f743a0851dce6beee4604",
+      "review_note": "New notes repay existing term borrowing and redeem old unsecured notes. No existing maturity amendment, capex use or granted waiver.",
+      "labels": {
+        "debt_refinancing": {
+          "label": "disclosed",
+          "evidence": [
+            "The Company will use the proceeds from the Notes Offering to fully repay the borrowings under Carnival Corporation’s first-priority senior secured term loan facility maturing in 2028"
+          ]
+        },
+        "maturity_extension": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "covenant_waiver": {
+          "label": "not_disclosed",
+          "evidence": []
+        },
+        "capital_expenditure_funding": {
+          "label": "not_disclosed",
+          "evidence": []
+        }
+      }
+    }
+  }
+}

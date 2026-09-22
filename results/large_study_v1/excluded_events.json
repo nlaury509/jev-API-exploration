@@ -1,0 +1,54 @@
+[
+  {
+    "accession": "0001193125-19-036824",
+    "reason": "missing lookback or holding-period bars"
+  },
+  {
+    "accession": "0001193125-19-095042",
+    "reason": "nonfinite market features"
+  },
+  {
+    "accession": "0001193125-19-173792",
+    "reason": "missing lookback or holding-period bars"
+  },
+  {
+    "accession": "0000753308-22-000086",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0001193125-22-311072",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0001193125-22-311112",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0001104659-23-128836",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0000950157-23-001280",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0001104659-23-130194",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0001104659-25-124210",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0000050863-25-000204",
+    "reason": "label crosses split boundary or entry outside study"
+  },
+  {
+    "accession": "0000950157-19-000864",
+    "reason": "same issuer/entry date; kept latest available filing"
+  },
+  {
+    "accession": "0001193125-24-155176",
+    "reason": "same issuer/entry date; kept latest available filing"
+  }
+]

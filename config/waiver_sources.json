@@ -1,0 +1,8 @@
+{
+  "selection": "Targeted positive-class challenge, selected by SEC search for waiver/forbearance disclosures; not a prevalence or random sample. Historical issuer labels, not a trading universe.",
+  "filings": [
+    {"cik": 811240, "accession": "0000950170-24-104387", "symbol": "BIOL", "discovery_url": "https://www.sec.gov/Archives/edgar/data/811240/000095017024104387/biol-20240831.htm"},
+    {"cik": 1159167, "accession": "0001193125-25-136125", "symbol": "IRBT", "discovery_url": "https://www.sec.gov/Archives/edgar/data/1159167/000119312525136125/d42654d8k.htm"},
+    {"cik": 1067837, "accession": "0001193125-24-201513", "symbol": "AUDACY", "discovery_url": "https://www.sec.gov/Archives/edgar/data/1067837/000119312524201513/d883977d8k.htm"}
+  ]
+}
