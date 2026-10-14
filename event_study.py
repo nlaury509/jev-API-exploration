@@ -56,13 +56,39 @@ def market_features(panel):
     return f
 
 
-def event_timing(accepted, sessions, horizon):
-    local_day = pd.Timestamp(accepted).tz_convert('America/New_York').tz_localize(None).normalize()
-    entry = int(sessions.searchsorted(local_day, side='right'))
+def event_timing(accepted, sessions, horizon, publication_lag_minutes=None,
+                 processing_lag_minutes=0):
+    accepted = pd.Timestamp(accepted)
+    if accepted.tzinfo is None:
+        raise ValueError('Filing acceptance timestamp must include a timezone.')
+    if publication_lag_minutes is not None and publication_lag_minutes < 0:
+        raise ValueError('Publication lag must be nonnegative.')
+    if processing_lag_minutes < 0:
+        raise ValueError('Processing lag must be nonnegative.')
+    if publication_lag_minutes is None:
+        if processing_lag_minutes:
+            raise ValueError('Processing lag requires a publication lag.')
+        local_day = accepted.tz_convert('America/New_York').tz_localize(None).normalize()
+        entry = int(sessions.searchsorted(local_day, side='right'))
+    else:
+        signal_ready = accepted + pd.Timedelta(
+            minutes=publication_lag_minutes + processing_lag_minutes)
+        opens = sessions.tz_localize('America/New_York') + pd.Timedelta(hours=9, minutes=30)
+        entry = int(opens.searchsorted(signal_ready, side='right'))
     exit_index = entry + horizon
     if entry < 61 or exit_index >= len(sessions):
         return None
     return entry, exit_index
+
+
+def model_for(learner, cfg):
+    if learner == 'boosting':
+        params = {k: v for k, v in cfg['learner'].items() if k != 'name'}
+        return HistGradientBoostingClassifier(**params)
+    if learner == 'logistic':
+        return make_pipeline(StandardScaler(), LogisticRegression(
+            C=cfg['logistic_C'], max_iter=3000, random_state=cfg['seed']))
+    raise ValueError(f'Unknown learner: {learner}')
 
 
 def split_for(entry, exit_date, cfg):
@@ -75,7 +101,8 @@ def split_for(entry, exit_date, cfg):
     return None
 
 
-def build_dataset(cfg, study=STUDY):
+def build_dataset(cfg, study=STUDY, publication_lag_minutes=15,
+                 processing_lag_minutes=1):
     sessions, panels = price_panels(pd.read_csv(study / 'bars.csv'))
     features = {s: market_features(p) for s, p in panels.items()}
     events = json.loads((study / 'events.json').read_text())
@@ -89,7 +116,8 @@ def build_dataset(cfg, study=STUDY):
         reason = None
         if symbol not in panels:
             reason = 'no price series'
-        timing = event_timing(e['accepted_at'], sessions, cfg['horizon_sessions'])
+        timing = event_timing(e['accepted_at'], sessions, cfg['horizon_sessions'],
+                              publication_lag_minutes, processing_lag_minutes)
         if timing is None:
             reason = 'insufficient calendar history or forward sessions'
         if reason:
@@ -129,6 +157,8 @@ def build_dataset(cfg, study=STUDY):
         f['meta_log_characters'] = math.log1p(len(text))
         accepted = pd.Timestamp(e['accepted_at']).tz_convert('America/New_York')
         entry_time = sessions[i].tz_localize('America/New_York') + pd.Timedelta(hours=9, minutes=30)
+        signal_ready = accepted + pd.Timedelta(
+            minutes=publication_lag_minutes + processing_lag_minutes)
         f['meta_hours_since_acceptance'] = (entry_time - accepted).total_seconds() / 3600
         for sector in sorted(set(cfg['sectors'].values())):
             f['meta_sector_' + sector] = int(cfg['sectors'][symbol] == sector)
@@ -144,6 +174,10 @@ def build_dataset(cfg, study=STUDY):
         asset_return = float(p.open.iloc[j] / p.open.iloc[i] - 1)
         spy_return = float(panels['SPY'].open.iloc[j] / panels['SPY'].open.iloc[i] - 1)
         rows.append({'accession': cid, 'symbol': symbol, 'accepted_at': e['accepted_at'],
+                     'signal_ready_at': signal_ready.isoformat(),
+                     'publication_lag_minutes': publication_lag_minutes,
+                     'processing_lag_minutes': processing_lag_minutes,
+                     'entry_time': entry_time.isoformat(),
                      'entry_date': sessions[i], 'exit_date': sessions[j], 'feature_date': sessions[i-1],
                      'split': split, 'asset_return': asset_return, 'spy_return': spy_return,
                      'excess_return': asset_return-spy_return, 'target': int(asset_return > spy_return), **f})
@@ -255,24 +289,118 @@ def simulate(frame, probabilities, threshold, sessions, panels, risk):
     return stats, curve, trades
 
 
-def evaluate(cfg):
+def evaluate_lag_scenario(cfg, frame, sessions):
+    split_counts = frame.groupby('split').size().to_dict()
+    for split, minimum in [('train', 150), ('validation', 40), ('test', 80)]:
+        if split_counts.get(split, 0) < minimum:
+            raise ValueError(f'Insufficient {split} events for lag scenario: {split_counts}')
+    train = frame.loc[frame.split == 'train']
+    val = frame.loc[frame.split == 'validation']
+    test = frame.loc[frame.split == 'test']
+    sets = feature_columns(frame)
+    test_sessions = sessions[(sessions >= pd.Timestamp(cfg['validation_end'])) &
+                             (sessions < pd.Timestamp(cfg['test_end']))]
+    probabilities, metrics = {}, {}
+    for learner in ('boosting', 'logistic'):
+        for name, columns in sets.items():
+            key = learner + '__' + name
+            model = model_for(learner, cfg)
+            model.fit(train[columns], train.target)
+            vp = model.predict_proba(val[columns])[:, 1]
+            tp = model.predict_proba(test[columns])[:, 1]
+            probabilities[key] = tp
+            metrics[key] = {'validation': scores(val.target, vp), 'test': scores(test.target, tp)}
+    paired = paired_block_interval(
+        test, probabilities['boosting__market_and_metadata'],
+        probabilities['boosting__market_metadata_jev'], test_sessions, cfg)
+    return {'split_counts': {str(k): int(v) for k, v in split_counts.items()},
+            'metrics': metrics, 'primary_comparison': paired}
+
+
+def evaluate_lag_sensitivity(cfg, processing_lag_minutes=1, study=STUDY, output=None):
+    if processing_lag_minutes < 0:
+        raise ValueError('Processing lag must be nonnegative.')
+    inference = json.loads((study / 'inference_summary.json').read_text())
+    if not inference['complete']:
+        raise ValueError('Finish extraction before evaluating any outcomes.')
+    if json.loads((study / 'config.json').read_text()) != cfg:
+        raise ValueError('Configuration differs from frozen collection configuration.')
+    out = output or ROOT / 'results' / 'large_study_v1_lag_sensitivity'
+    if out.exists():
+        raise ValueError(f'Lag-sensitivity results already exist: {out}')
+    scenarios = [
+        ('next_session_after_acceptance_local_date', None, 0),
+        *((f'publication_{lag}m_processing_{processing_lag_minutes}m', lag,
+           processing_lag_minutes) for lag in (0, 15, 30, 60)),
+    ]
+    results, flat_metrics = [], []
+    for name, publication_lag, processing_lag in scenarios:
+        frame, dropped, sessions, _ = build_dataset(
+            cfg, study, publication_lag, processing_lag)
+        result = evaluate_lag_scenario(cfg, frame, sessions)
+        result |= {'name': name, 'publication_lag_minutes': publication_lag,
+                   'processing_lag_minutes': processing_lag,
+                   'usable_events': len(frame),
+                   'excluded_counts': dict(Counter(r['reason'] for r in dropped))}
+        results.append(result)
+        for model, values in result['metrics'].items():
+            flat_metrics.append({'scenario': name, 'model': model,
+                                 'validation_log_loss': values['validation']['log_loss'],
+                                 'test_log_loss': values['test']['log_loss'],
+                                 'test_brier': values['test']['brier'],
+                                 'test_auc': values['test']['auc'],
+                                 'test_accuracy': values['test']['accuracy']})
+        print(name, 'usable events', len(frame),
+              'primary test log-loss difference',
+              round(result['primary_comparison']['delta_log_loss'], 5), flush=True)
+    out.mkdir(parents=True, exist_ok=False)
+    write_json(out / 'config.json', cfg)
+    write_json(out / 'lag_sensitivity.json', {
+        'created_at': now(),
+        'processing_lag_minutes_for_publication_scenarios': processing_lag_minutes,
+        'entry_rule': 'Enter at the first daily session open strictly after signal_ready_at.',
+        'signal_ready_rule': 'SEC acceptance time + publication lag + processing lag.',
+        'scenarios': results,
+        'limitations': [
+            'Publication lags are assumptions because SEC acceptance is not an exact public-availability timestamp.',
+            'The processing lag is illustrative; replace it with measured end-to-end inference latency.',
+            'Historical inference responses do not prove that the same signal would have been produced or available in real time.',
+            'Daily open prices are proxies, not executable fills.',
+        ],
+    })
+    pd.DataFrame(flat_metrics).to_csv(out / 'scenario_metrics.csv', index=False)
+    print('Saved lag sensitivity:', out, flush=True)
+
+
+def evaluate(cfg, publication_lag_minutes=15, processing_lag_minutes=1):
+    if publication_lag_minutes < 0 or processing_lag_minutes < 0:
+        raise ValueError('Publication and processing lags must be nonnegative.')
     inference = json.loads((STUDY/'inference_summary.json').read_text())
     if not inference['complete']:
         raise ValueError('Finish extraction before evaluating any outcomes.')
     if json.loads((STUDY/'config.json').read_text()) != cfg:
         raise ValueError('Configuration differs from frozen collection configuration.')
-    out = ROOT/'results'/'large_study_v1'
+    out = ROOT/'results'/f'large_study_v1_publication_{publication_lag_minutes}m_processing_{processing_lag_minutes}m'
     if (out/'summary.json').exists():
         raise ValueError('This test was already evaluated. Inspect the saved result; do not silently retune/retest.')
-    out.mkdir(parents=True,exist_ok=True)
+    out.mkdir(parents=True,exist_ok=False)
     write_json(out/'config.json',cfg)
+    timing_assumptions = {
+        'publication_lag_minutes': publication_lag_minutes,
+        'processing_lag_minutes': processing_lag_minutes,
+        'entry_rule': 'First daily session open strictly after signal_ready_at.',
+        'signal_ready_rule': 'SEC acceptance time + publication lag + processing lag.',
+    }
+    write_json(out/'timing_assumptions.json', timing_assumptions)
     (out/'evaluation_code.py').write_bytes(Path(__file__).read_bytes())
     import sklearn
     write_json(out/'software.json',{'evaluated_at':now(),'code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'numpy':np.__version__,'pandas':pd.__version__,'scikit_learn':sklearn.__version__,
         'supporting_code_sha256':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
           for name in ['collect.py','large_study.py','jev.py','text_baseline.py']}})
-    frame,dropped,sessions,panels = build_dataset(cfg)
+    frame,dropped,sessions,panels = build_dataset(
+        cfg, publication_lag_minutes=publication_lag_minutes,
+        processing_lag_minutes=processing_lag_minutes)
     frame.to_csv(out/'events_with_features_and_labels.csv',index=False)
     write_json(out/'excluded_events.json',dropped)
     split_counts = frame.groupby('split').size().to_dict()
@@ -290,11 +418,7 @@ def evaluate(cfg):
     for learner in ('boosting','logistic'):
         for name,columns in sets.items():
             key=learner+'__'+name
-            if learner=='boosting':
-                params={k:v for k,v in cfg['learner'].items() if k!='name'}
-                model=HistGradientBoostingClassifier(**params)
-            else:
-                model=make_pipeline(StandardScaler(),LogisticRegression(C=cfg['logistic_C'],max_iter=3000,random_state=cfg['seed']))
+            model=model_for(learner,cfg)
             model.fit(train[columns],train.target)
             vp=model.predict_proba(val[columns])[:,1]
             tp=model.predict_proba(test[columns])[:,1]
@@ -328,12 +452,16 @@ def evaluate(cfg):
                     'mean_excess_return_bps':float(test.excess_return.to_numpy()[take].mean()*10000)})
     write_json(out/'confidence_analysis.json',confidence)
     summary={'created_at':now(),'collection':json.loads((STUDY/'collection_summary.json').read_text()),'inference':inference,
+        'timing_assumptions':timing_assumptions,
         'split_counts':split_counts,'unique_symbols':int(frame.symbol.nunique()),'test_symbols':int(test.symbol.nunique()),
         'excluded_counts':dict(Counter(r['reason'] for r in dropped)), 'metrics':metrics,'paired_comparisons':paired,'portfolios':portfolios,
         'usable_events_by_year':{str(k):int(v) for k,v in frame.groupby(frame.entry_date.dt.year).size().items()},
         'usable_events_by_symbol':{str(k):int(v) for k,v in frame.groupby('symbol').size().items()},
         'jev_feature_variation':{c:{'min':float(frame[c].min()),'max':float(frame[c].max()),'std':float(frame[c].std())} for c in frame if c.startswith('jev_')},
         'primary_result':paired['boosting_jev'],'limitations':cfg['limitations']+[
+            'Publication lag is an assumption because SEC acceptance is not an exact public-availability timestamp.',
+            'Processing lag is an assumption; replace it with measured end-to-end inference latency.',
+            'Historical inference responses do not prove that the same signal would have been produced or available in real time.',
             'Four text features do not test the value of all possible language-model inputs.',
             'Issuer/date dependence is approximated by 20-session blocks; intervals are exploratory, not proof.',
             'No tuning after viewing test results; secondary learner/rules/year analyses are descriptive.',
@@ -375,7 +503,8 @@ def report(out,s):
                 'Primary comparison favors the baseline: adding Jev features increases log loss in this historical sample.')
     lines=['# Large historical predictive study','',conclusion,'',
        f"Matched events: {s['split_counts']}; {s['unique_symbols']} issuers.",'',
-       'Target: positive asset-minus-SPY adjusted return from the next session open through five trading sessions later.',
+       f"Timing: publication lag {s['timing_assumptions']['publication_lag_minutes']} minutes plus processing lag {s['timing_assumptions']['processing_lag_minutes']} minutes; enter at the first daily open strictly after the signal is ready.",
+       'Target: positive asset-minus-SPY adjusted return from entry open through five trading sessions later.',
        'Training: 2018–2022; validation: 2023; test: 2024–2025. Labels crossing split boundaries were purged.','',
        '| Model | Test log loss ↓ | Brier ↓ | AUC ↑ | Accuracy |','|---|---:|---:|---:|---:|']
     for key,value in s['metrics'].items():
@@ -395,4 +524,16 @@ def report(out,s):
 
 
 if __name__=='__main__':
-    evaluate(json.loads((ROOT/'config/large_study.json').read_text()))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--publication-lag-minutes', type=int, default=15,
+                        help='Assumed SEC-publication delay for the main evaluation (default: 15).')
+    parser.add_argument('--processing-lag-minutes', type=int, default=1,
+                        help='Assumed signal-processing delay (default: 1; replace with measured latency).')
+    parser.add_argument('--lag-sensitivity', action='store_true',
+                        help='Evaluate the next-session baseline and 0/15/30/60-minute publication delays.')
+    args = parser.parse_args()
+    config = json.loads((ROOT/'config/large_study.json').read_text())
+    if args.lag_sensitivity:
+        evaluate_lag_sensitivity(config, args.processing_lag_minutes)
+    else:
+        evaluate(config, args.publication_lag_minutes, args.processing_lag_minutes)

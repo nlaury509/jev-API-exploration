@@ -26,6 +26,15 @@ class EventStudyTests(unittest.TestCase):
         i,_=event_timing('2024-04-08T10:00:00Z',sessions,5)
         self.assertEqual(sessions[i],pd.Timestamp('2024-04-09'))
 
+    def test_lagged_entry_uses_first_open_strictly_after_signal_ready_time(self):
+        sessions=pd.bdate_range('2024-01-01',periods=200)
+        i,_=event_timing('2024-04-08T08:00:00-04:00',sessions,5,0,89)
+        self.assertEqual(sessions[i],pd.Timestamp('2024-04-08'))
+        i,_=event_timing('2024-04-08T08:00:00-04:00',sessions,5,0,90)
+        self.assertEqual(sessions[i],pd.Timestamp('2024-04-09'))
+        i,_=event_timing('2024-04-08T10:00:00-04:00',sessions,5,0,0)
+        self.assertEqual(sessions[i],pd.Timestamp('2024-04-09'))
+
     def test_purge_outcomes_across_all_split_boundaries(self):
         self.assertIsNone(split_for(pd.Timestamp('2022-12-29'),pd.Timestamp('2023-01-05'),self.cfg))
         self.assertIsNone(split_for(pd.Timestamp('2023-12-28'),pd.Timestamp('2024-01-04'),self.cfg))
@@ -66,6 +75,9 @@ class EventStudyTests(unittest.TestCase):
             before,_,_,_=build_dataset(self.cfg,study)
             self.assertEqual(before.iloc[0].feature_date,sessions[70])
             self.assertEqual(before.iloc[0].entry_date,sessions[71])
+            self.assertEqual(before.iloc[0].publication_lag_minutes,15)
+            self.assertEqual(before.iloc[0].processing_lag_minutes,1)
+            self.assertIn('signal_ready_at',before.columns)
             # Huge change in the eventual exit price must not affect any input.
             bars.loc[(bars.symbol=='AAPL')&(bars.index%100==76),'open']*=1.5
             bars.loc[(bars.symbol=='SPY')&(bars.index%100==76),'open']*=1.25
